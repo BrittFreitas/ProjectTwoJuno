@@ -226,6 +226,20 @@ html {
   overflow: hidden;
 }
 
+.landingPage ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 20%;
+  height: 200px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.landingPage ul li {
+  background-color: red;
+}
+
 h1 {
   color: blue;
 }

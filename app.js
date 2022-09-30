@@ -1,4 +1,4 @@
-
+const app = {};
 //poetry quiz app
 //minimum viable product:  
 //utilizing poetrydb API fetch a random poem title and display it to page
@@ -8,24 +8,35 @@
         // const modes = document.querySelector(".modes");
         // console.log(modes)
 
-        const modes = document.querySelectorAll(".modes");
+        app.modes = document.querySelectorAll(".modes");
         // console.log(modesAll)
     
-        modes.forEach((mode) => {
-            mode.addEventListener("click", ()=> {
-                
-            })
-        })
+        app.selectMode = () => {
+            app.modes.forEach((mode) => {
+                mode.addEventListener("click", (event)=> {
+                    app.modeId = event.target.id
+                    
+                    // get id of what we clicked on
+                    // put id in variable called modeId
+                });
+            });
+        }
+        
         // modeContainer.addEventListener("click", (event)=> {
             
         // })
 
 
-        const startButton = document.querySelector(".start");
-
-        startButton.addEventListener("click", () => {
-           
-        })
+        app.startButton = document.querySelector(".start");
+        
+        app.startQuiz = () => {
+            app.startButton.addEventListener("click", () => {
+                app.selectMode();
+                // template literals allow us to target IDs on the page using modeId from app.selectMode();
+                document.getElementById(`${app.modeId}Game`).scrollIntoView({behavior: "smooth"});
+            });
+        }
+        
     //2. display a random poem title 
         // make a fetch to the random endpoint of the api and grab the title of the poem
         //using .textContent property to get the title into the .titleContainer div 
@@ -46,3 +57,10 @@
     // Hints: display the first few lines of a poem if a user needs a hint 
     // Skip feature to allow user to move past question
     //creating an easy, hard, panic mode; hard mode simply has a textbox for user to input poet name and user must answer 20 questions to finish quiz, easy mode has hints and a selection of poets to choose from, one 10 questions. Panic mode has a countdown that user must select answer within, no limit to questions.
+
+    app.init = () => {
+        app.selectMode();
+        app.startQuiz();
+    };
+
+    app.init();
