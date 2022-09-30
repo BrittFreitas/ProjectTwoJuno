@@ -9,24 +9,15 @@ const app = {};
         // console.log(modes)
 
         app.modes = document.querySelectorAll(".modes");
-        // console.log(modesAll)
     
         app.selectMode = () => {
             app.modes.forEach((mode) => {
                 mode.addEventListener("click", (event)=> {
                     app.modeId = event.target.id
-                    
-                    // get id of what we clicked on
-                    // put id in variable called modeId
                 });
             });
         }
         
-        // modeContainer.addEventListener("click", (event)=> {
-            
-        // })
-
-
         app.startButton = document.querySelector(".start");
         
         app.startQuiz = () => {
@@ -40,6 +31,25 @@ const app = {};
     //2. display a random poem title 
         // make a fetch to the random endpoint of the api and grab the title of the poem
         //using .textContent property to get the title into the .titleContainer div 
+
+        app.displayPoet = () => {
+            const poetContainer = document.querySelector(".poetContainer");
+            poetContainer.innerHTML = `<h3>${app.poetName}</h3>`
+        };
+
+        //display 3 random poem titles into li class options 
+        app.displayPoem = (array) => {
+            const poemTitleContainer = document.querySelector(".poemTitleContainer");
+            poemTitleContainer.innerHTML = "";
+            array.forEach((poemInfo) => {
+                const listItem = document.createElement("li");
+                listItem.className = "options";
+                listItem.textContent = `${poemInfo.title}`;
+                poemTitleContainer.appendChild(listItem)
+            });
+            
+
+        }
         
     //3. provide options of poets
         //correct option to be selected from the poem object 
@@ -56,11 +66,31 @@ const app = {};
 //stretch goals: 
     // Hints: display the first few lines of a poem if a user needs a hint 
     // Skip feature to allow user to move past question
-    //creating an easy, hard, panic mode; hard mode simply has a textbox for user to input poet name and user must answer 20 questions to finish quiz, easy mode has hints and a selection of poets to choose from, one 10 questions. Panic mode has a countdown that user must select answer within, no limit to questions.
+    //creating an easy, hard, panic mode; hard mode simply has a textbox for user to input poet name and user must answer 20 questions to finish quiz, easy mode has hints and a selection of poets to choose from, one 10 questions. Panic mode has a countdown that user must select answer within, no limit to questions.\
+
+
+    app.randomIndex = (array) => {
+        const randomIndex = Math.floor(Math.random() * array.length);
+        return randomIndex;
+    };
 
     app.init = () => {
         app.selectMode();
         app.startQuiz();
+
+
+
+        fetch("https://poetrydb.org/random/3")
+            .then((response) => {
+                return response.json();   
+            })
+            .then((data) => {
+                
+                app.poemArray = data
+                app.poetName = data[app.randomIndex(app.poemArray)].author;
+                app.displayPoet();
+                app.displayPoem(app.poemArray);
+            })
     };
 
     app.init();
