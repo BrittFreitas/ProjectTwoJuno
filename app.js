@@ -22,4 +22,5 @@
 
 //stretch goals: 
     // Hints: display the first few lines of a poem if a user needs a hint 
+    // Skip feature to allow user to move past question
     //creating an easy, hard, panic mode; hard mode simply has a textbox for user to input poet name and user must answer 20 questions to finish quiz, easy mode has hints and a selection of poets to choose from, one 10 questions. Panic mode has a countdown that user must select answer within, no limit to questions.

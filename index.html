@@ -1,12 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poetry Trivia</title>
+  </head>
+
+  <body>
+    <section class="landingPage" id="landingPage">
+      <h1>Poetry Trivia</h1>
+      <ul>
+        <li class="easyMode modes">
+          <h2>Easy Mode</h2>
+          <p>
+            In easy mode, simply match the poet to the poem title by selecting
+            one of the options provided.
+          </p>
+        </li>
+        <li class="hardMode modes">
+          <h2>Hard Mode</h2>
+          <p>
+            In hard mode, type in the poet name that corresponds with the poem
+            title displayed.
+          </p>
+        </li>
+      </ul>
+      <a class="button" href="#">Start</a>
+    </section>
+
+    <section class="easyGame">
+      <h2>Poetry Trivia</h2>
+      <div class="titleContainer">
+        <p></p>
+      </div>
+      <ul>
+        <li class="options"></li>
+        <li class="options"></li>
+        <li class="options"></li>
+      </ul>
+      <div class="resultContainer">
+        <div class="checkOrX"></div>
+        <div class="currentScore"></div>
+      </div>
+    </section>
+
+    <section class="hardGame">
+      <h2>Poetry Trivia</h2>
+      <div class="titleContainer">
+        <p></p>
+      </div>
+      <form action="submit">
+        <label for="textBox" hidden>Poet Name</label>
+        <input
+          type="text"
+          placeholder="insert poet name here"
+          class="textBox"
+          name="textBox"
+          id="textBox"
+        />
+        <button type="submit" class="submit">Submit</button>
+      </form>
+      <div class="resultContainer">
+        <div class="checkOrX"></div>
+        <div class="currentScore"></div>
+      </div>
+    </section>
+
+    <section class="endPage">
+      <h2>Poetry Trivia</h2>
+      <div>
+        <h3 class="finalScore"></h3>
+        <p class="userMessage"></p>
+        <a href="#landingPage">Restart</a>
+      </div>
+    </section>
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
