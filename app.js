@@ -56,24 +56,48 @@ app.checkAnswer = () => {
   const poetName = app.poetContainer.textContent;
   const options = document.querySelectorAll(".options");
   options.forEach((option) => {
-    option.addEventListener("click", (event) => {
-      app.rightAnswer = event.target.innerText;
-      if (app.rightAnswer === )
+    option.addEventListener("click", app.selectionCheck)     
+});
+}
+
+//creating a function to compare user choice with the poem written by poet name displayed
+  app.selectionCheck = (event) => {
+     app.rightAnswer = event.target.innerText;
+  if (app.rightAnswer === app.poemInfo.title ) {
+      console.log("very nice")
+      app.counter = app.counter + 1;
+      console.log(app.counter);
+
+  } else {
+      console.log("wrong answer LOSER")
+      console.log(app.counter);
+  }
+  };
+
+  //creating a function that resets the question when user clicks on next question button
+  app.nextQuestion = () => {
+    const nextButton = document.querySelector('.next')
+    nextButton.addEventListener('click', () => {
+        console.log(nextButton)
+        fetch("https://poetrydb.org/random/3")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          app.poemArray = data;
+          app.poemInfo =  data[app.randomIndex(app.poemArray)];
+          app.poetName = app.poemInfo.author;
+          
+        console.log(app.poemInfo);
+        console.log(app.poetName);
+          app.displayPoet();
+          app.displayPoem(app.poemArray);
+          app.checkAnswer();
+        });
     });
-  });
-  //   array.forEach((poemInfo) => {
-  //       if (poetName === poemInfo.author) {
-  //           const correctAnswer =
-  //       } else {
-  //           console.log("wrong answer loser");
-  //       }
-  //   })
-  //   app.poemTitleContainer.forEach((option) => {
-  //     option.addEventListener("click", (event) => {
-  //         console.log(event);
-  //     });
-  //   });
-};
+  }
+ 
+ 
 
 //3. provide options of poets
 //correct option to be selected from the poem object
@@ -99,14 +123,20 @@ app.randomIndex = (array) => {
 app.init = () => {
   app.selectMode();
   app.startQuiz();
-
+  app.counter = 0;
+  app.nextQuestion();
+  
   fetch("https://poetrydb.org/random/3")
     .then((response) => {
       return response.json();
     })
     .then((data) => {
       app.poemArray = data;
-      app.poetName = data[app.randomIndex(app.poemArray)].author;
+      app.poemInfo =  data[app.randomIndex(app.poemArray)];
+      app.poetName = app.poemInfo.author;
+      
+    console.log(app.poemInfo);
+    console.log(app.poetName);
       app.displayPoet();
       app.displayPoem(app.poemArray);
       app.checkAnswer();
