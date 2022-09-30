@@ -3,7 +3,29 @@
 //minimum viable product:  
 //utilizing poetrydb API fetch a random poem title and display it to page
     //1. create a landing page with app title, description, and a button to start the quiz 
+        //attach the event lsiter to the parent element of the li's, on click it we will save the event.target
         //event listener on button click that links to quiz page
+        // const modes = document.querySelector(".modes");
+        // console.log(modes)
+
+        const modes = document.querySelectorAll(".modes");
+        // console.log(modesAll)
+    
+        modes.forEach((mode) => {
+            mode.addEventListener("click", ()=> {
+                
+            })
+        })
+        // modeContainer.addEventListener("click", (event)=> {
+            
+        // })
+
+
+        const startButton = document.querySelector(".start");
+
+        startButton.addEventListener("click", () => {
+           
+        })
     //2. display a random poem title 
         // make a fetch to the random endpoint of the api and grab the title of the poem
         //using .textContent property to get the title into the .titleContainer div 
