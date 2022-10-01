@@ -8,6 +8,21 @@ const app = {};
 // const modes = document.querySelector(".modes");
 // console.log(modes)
 
+app.getQuestion = () => {
+  fetch("https://poetrydb.org/random/3")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          app.poemArray = data;
+          app.poemInfo =  data[app.getRandomIndex(app.poemArray)];
+          app.poetName = app.poemInfo.author;
+          app.displayPoet();
+          app.displayPoem(app.poemArray);
+          app.checkAnswer();
+        });
+};
+
 app.modes = document.querySelectorAll(".modes");
 
 app.selectMode = () => {
@@ -21,6 +36,8 @@ app.selectMode = () => {
 app.startButton = document.querySelector(".start");
 
 app.startQuiz = () => {
+  app.counter = 0;
+  app.getQuestion();
   app.startButton.addEventListener("click", () => {
     app.selectMode();
     // template literals allow us to target IDs on the page using modeId from app.selectMode();
@@ -53,50 +70,33 @@ app.displayPoem = (array) => {
 
 //function to check answer against the poem names displayed to locate correct answer
 app.checkAnswer = () => {
-  const poetName = app.poetContainer.textContent;
+  // const poetName = app.poetContainer.textContent;
   const options = document.querySelectorAll(".options");
   options.forEach((option) => {
     option.addEventListener("click", app.selectionCheck)     
-});
+  });
 }
 
 //creating a function to compare user choice with the poem written by poet name displayed
-  app.selectionCheck = (event) => {
+app.selectionCheck = (event) => {
      app.rightAnswer = event.target.innerText;
   if (app.rightAnswer === app.poemInfo.title ) {
       console.log("very nice")
       app.counter = app.counter + 1;
       console.log(app.counter);
-
   } else {
       console.log("wrong answer LOSER")
       console.log(app.counter);
   }
-  };
+};
 
   //creating a function that resets the question when user clicks on next question button
-  app.nextQuestion = () => {
-    const nextButton = document.querySelector('.next')
-    nextButton.addEventListener('click', () => {
-        console.log(nextButton)
-        fetch("https://poetrydb.org/random/3")
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          app.poemArray = data;
-          app.poemInfo =  data[app.randomIndex(app.poemArray)];
-          app.poetName = app.poemInfo.author;
-          
-        console.log(app.poemInfo);
-        console.log(app.poetName);
-          app.displayPoet();
-          app.displayPoem(app.poemArray);
-          app.checkAnswer();
-        });
-    });
-  }
- 
+app.nextQuestion = () => {
+  const nextButton = document.querySelector('.next')
+  nextButton.addEventListener('click', app.getQuestion);
+};
+
+
  
 
 //3. provide options of poets
@@ -115,7 +115,7 @@ app.checkAnswer = () => {
 // Skip feature to allow user to move past question
 //creating an easy, hard, panic mode; hard mode simply has a textbox for user to input poet name and user must answer 20 questions to finish quiz, easy mode has hints and a selection of poets to choose from, one 10 questions. Panic mode has a countdown that user must select answer within, no limit to questions.\
 
-app.randomIndex = (array) => {
+app.getRandomIndex = (array) => {
   const randomIndex = Math.floor(Math.random() * array.length);
   return randomIndex;
 };
@@ -123,24 +123,7 @@ app.randomIndex = (array) => {
 app.init = () => {
   app.selectMode();
   app.startQuiz();
-  app.counter = 0;
   app.nextQuestion();
-  
-  fetch("https://poetrydb.org/random/3")
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      app.poemArray = data;
-      app.poemInfo =  data[app.randomIndex(app.poemArray)];
-      app.poetName = app.poemInfo.author;
-      
-    console.log(app.poemInfo);
-    console.log(app.poetName);
-      app.displayPoet();
-      app.displayPoem(app.poemArray);
-      app.checkAnswer();
-    });
 };
 
 app.init();
