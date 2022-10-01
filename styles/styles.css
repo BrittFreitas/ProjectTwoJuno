@@ -243,3 +243,11 @@ html {
 h1 {
   color: blue;
 }
+
+.correct {
+  background-color: green;
+}
+
+.incorrect {
+  background-color: red;
+}

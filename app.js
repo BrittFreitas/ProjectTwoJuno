@@ -8,7 +8,7 @@ const app = {};
 // const modes = document.querySelector(".modes");
 // console.log(modes)
 
-
+app.numberOfQuestions = 5
 // TO-DO:need to use .map() / .filter() to make sure none of the three randomly selected poems have same authors 
 app.getQuestion = () => {
   fetch("https://poetrydb.org/random/3")
@@ -67,26 +67,39 @@ app.displayPoem = (array) => {
 };
 
 //function to check answer against the poem names displayed to locate correct answer
+
+app.once = {
+  once : true
+};
 app.checkAnswer = () => {
   // const poetName = app.poetContainer.textContent;
-  const options = document.querySelectorAll(".options");
-  options.forEach((option) => {
-    option.addEventListener("click", app.selectionCheck)     
+  app.options = document.querySelectorAll(".options");
+  app.options.forEach((option) => {
+    option.addEventListener("click", app.selectionCheck, app.once);    
   });
 }
 
 //creating a function to compare user choice with the poem written by poet name displayed
+
+
 app.selectionCheck = (event) => {
-     app.rightAnswer = event.target.innerText;
+  app.userChoice = event.target;
+  console.log(app.userChoice);
+  app.rightAnswer = event.target.innerText;
+  app.userChoice.classList.remove("correct", "incorrect");
   if (app.rightAnswer === app.poemInfo.title ) {
       console.log("very nice")
       app.counter = app.counter + 1;
       console.log(app.counter);
+      app.userChoice.classList.add("correct");
   } else {
       console.log("wrong answer LOSER")
       console.log(app.counter);
+      app.userChoice.classList.add("incorrect");
   }
+  app.currentScore.innerHTML = `Current score: ${app.counter}/${app.numberOfQuestions}`;
 };
+
 
   //creating a function that resets the question when user clicks on next question button
 app.nextQuestion = () => {
@@ -95,8 +108,9 @@ app.nextQuestion = () => {
 };
 
 
+
 // TO-DO: 
-  // function to display current score and checkmark or x
+  // disable other buttons when user have selected their answer 
   // function to set the number of questions in the quiz + finish button for last question 
   // function to display message on final end page 
   // function for restart button on end page (event listener on button with app.startQuiz)
@@ -126,6 +140,7 @@ app.init = () => {
   app.modes = document.querySelectorAll(".modes");
   app.startButton = document.querySelector(".start");
   app.poemTitleContainer = document.querySelector(".poemTitleContainer");
+  app.currentScore = document.querySelector(".currentScore");
   app.selectMode();
   app.startQuiz();
   app.nextQuestion();

@@ -7,3 +7,10 @@
 @use "./partials/endPage";
 @use "./partials/shared/mediaQueries";
 
+.correct {
+    background-color: green;
+}
+
+.incorrect {
+    background-color: red;
+}
