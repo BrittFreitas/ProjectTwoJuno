@@ -45,7 +45,9 @@
           <div class="currentScore"></div>
         </div>
       </div>
-      <button class="next">Next Question</button>
+      <button class="next">Next </button>
+      <button class="skip">Skip </button>
+      <a href="#endPage" class="button finish hidden">Finish Quiz</a>
     </section>
 
     <section class="hardGame" id="hardGame">
@@ -56,6 +58,7 @@
       <form action="submit">
         <label for="textBox" hidden>Poet Name</label>
         <input
+         required
           type="text"
           placeholder="insert poet name here"
           class="textBox"
@@ -75,7 +78,7 @@
       <div>
         <h3 class="finalScore"></h3>
         <p>Congratulations on finishing the quiz!</p>
-        <a href="#landingPage">Restart</a>
+        <a class="restart" href="#landingPage">Restart</a>
       </div>
     </section>
     <script src="app.js"></script>
