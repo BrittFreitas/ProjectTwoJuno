@@ -8,6 +8,8 @@ const app = {};
 // const modes = document.querySelector(".modes");
 // console.log(modes)
 
+
+// TO-DO:need to use .map() / .filter() to make sure none of the three randomly selected poems have same authors 
 app.getQuestion = () => {
   fetch("https://poetrydb.org/random/3")
         .then((response) => {
@@ -23,8 +25,6 @@ app.getQuestion = () => {
         });
 };
 
-app.modes = document.querySelectorAll(".modes");
-
 app.selectMode = () => {
   app.modes.forEach((mode) => {
     mode.addEventListener("click", (event) => {
@@ -33,8 +33,7 @@ app.selectMode = () => {
   });
 };
 
-app.startButton = document.querySelector(".start");
-
+// TO-DO: if app.modeId is empty, prompt users to select a dificulty
 app.startQuiz = () => {
   app.counter = 0;
   app.getQuestion();
@@ -58,7 +57,6 @@ app.displayPoet = () => {
 
 //display 3 random poem titles into li class options
 app.displayPoem = (array) => {
-  app.poemTitleContainer = document.querySelector(".poemTitleContainer");
   app.poemTitleContainer.innerHTML = "";
   array.forEach((poemInfo) => {
     const listItem = document.createElement("li");
@@ -97,7 +95,11 @@ app.nextQuestion = () => {
 };
 
 
- 
+// TO-DO: 
+  // function to display current score and checkmark or x
+  // function to set the number of questions in the quiz + finish button for last question 
+  // function to display message on final end page 
+  // function for restart button on end page (event listener on button with app.startQuiz)
 
 //3. provide options of poets
 //correct option to be selected from the poem object
@@ -121,6 +123,9 @@ app.getRandomIndex = (array) => {
 };
 
 app.init = () => {
+  app.modes = document.querySelectorAll(".modes");
+  app.startButton = document.querySelector(".start");
+  app.poemTitleContainer = document.querySelector(".poemTitleContainer");
   app.selectMode();
   app.startQuiz();
   app.nextQuestion();
