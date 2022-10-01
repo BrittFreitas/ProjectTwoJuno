@@ -8,7 +8,7 @@ const app = {};
 // const modes = document.querySelector(".modes");
 // console.log(modes)
 
-app.numberOfQuestions = 5
+
 // TO-DO:need to use .map() / .filter() to make sure none of the three randomly selected poems have same authors 
 app.getQuestion = () => {
   fetch("https://poetrydb.org/random/3")
@@ -71,12 +71,9 @@ app.displayPoem = (array) => {
 app.once = {
   once : true
 };
+
 app.checkAnswer = () => {
-  // const poetName = app.poetContainer.textContent;
-  app.options = document.querySelectorAll(".options");
-  app.options.forEach((option) => {
-    option.addEventListener("click", app.selectionCheck, app.once);    
-  });
+  app.poemTitleContainer.addEventListener("click", app.selectionCheck, app.once);
 }
 
 //creating a function to compare user choice with the poem written by poet name displayed
@@ -97,23 +94,41 @@ app.selectionCheck = (event) => {
       console.log(app.counter);
       app.userChoice.classList.add("incorrect");
   }
-  app.currentScore.innerHTML = `Current score: ${app.counter}/${app.numberOfQuestions}`;
+  app.currentScore.innerHTML = `Current score: ${app.counter}/${app.totalQuestions}`;
 };
 
 
-  //creating a function that resets the question when user clicks on next question button
-app.nextQuestion = () => {
-  const nextButton = document.querySelector('.next')
-  nextButton.addEventListener('click', app.getQuestion);
+app.nextButton = document.querySelector('.next');
+app.nextButton.addEventListener('click', () => {
+  app.questionTracker();
+});
+
+app.questionTracker = () => {
+  app.totalQuestions = 5;
+  app.numOfNextClicks = app.numOfNextClicks + 1;
+  if (app.numOfNextClicks >= app.totalQuestions) {
+    console.log(app.numOfNextClicks);
+    app.finalScore = document.querySelector(".finalScore");
+    app.finalScore.innerHTML = `Your final score is ${app.counter}/${app.totalQuestions}`;
+    document
+      .getElementById("endPage")
+      .scrollIntoView({ behavior: "smooth" });
+  } else if (app.numOfNextClicks === (app.totalQuestions - 1)) {
+    app.getQuestion();
+    app.nextButton.textContent = "Finish";
+    console.log(app.numOfNextClicks);
+  } else if (app.numOfNextClicks < app.totalQuestions) {
+    app.getQuestion();
+    console.log(app.numOfNextClicks);
+  }
 };
 
 
 
 // TO-DO: 
-  // disable other buttons when user have selected their answer 
-  // function to set the number of questions in the quiz + finish button for last question 
   // function to display message on final end page 
   // function for restart button on end page (event listener on button with app.startQuiz)
+  // only let user click next question if they have selected an answer
 
 //3. provide options of poets
 //correct option to be selected from the poem object
@@ -141,9 +156,12 @@ app.init = () => {
   app.startButton = document.querySelector(".start");
   app.poemTitleContainer = document.querySelector(".poemTitleContainer");
   app.currentScore = document.querySelector(".currentScore");
+  
+  
+  app.numOfNextClicks = 0;
   app.selectMode();
   app.startQuiz();
-  app.nextQuestion();
+  // app.nextQuestion();
 };
 
 app.init();
