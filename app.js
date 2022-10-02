@@ -8,7 +8,6 @@ const app = {};
 // const modes = document.querySelector(".modes");
 // console.log(modes)
 
-
 app.getQuestion = () => {
   fetch("https://poetrydb.org/random/3")
     .then((response) => {
@@ -31,7 +30,6 @@ app.selectMode = () => {
     });
   });
 };
-
 
 app.startQuiz = () => {
   app.counter = 0;
@@ -103,16 +101,25 @@ app.selectionCheck = (event) => {
 
 //function to make sure the user clicks something before being able to go to next question
 //function that invokes the question tracker when user clicks the next question button
-app.nextButton = document.querySelector(".next");
-app.nextButton.addEventListener("click", () => {
-   app.questionTracker();
+app.nextQuestionEasy = () => {
+const nextButton = document.querySelector(".next");
+nextButton.addEventListener("click", () => {
+app.questionTracker();
 });
+};
 
-  
+app.nextQuestionHard = () => {
+  const nextButton = document.querySelector(".nextHard");
+  console.log(nextButton)
+  nextButton.addEventListener("click", () => {
+    app.getHardPoem();
+    app.questionTracker();
+  });
+};
+
 app.finishButton = document.querySelector(".finish");
 //function that tracks the number of questions answered
 app.questionTracker = () => {
-  app.totalQuestions = 5;
   app.numOfNextClicks = app.numOfNextClicks + 1;
   if (app.numOfNextClicks >= app.totalQuestions) {
     console.log(app.numOfNextClicks);
@@ -124,7 +131,6 @@ app.questionTracker = () => {
 
     app.finishButton.classList.remove("hidden");
     app.nextButton.classList.add("hidden");
-    
 
     console.log(app.numOfNextClicks);
   } else if (app.numOfNextClicks < app.totalQuestions) {
@@ -140,70 +146,55 @@ app.restartQuiz = () => {
     app.startQuiz();
     app.finishButton.classList.add("hidden");
     app.nextButton.classList.remove("hidden");
-   
   });
 };
+
+
+//HARD MODE BEGINS HERE
+app.getHardPoem = () => {
+  fetch("https://poetrydb.org/random")
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+
+      app.randomHardPoem = data[0];
+      app.randomHardPoemTitle = app.randomHardPoem.title;
+      app.displayRandomPoemHard();
+    });
+};
+
+//function that appends a random poem title from the API
+app.displayRandomPoemHard = () => {
+  app.titleContainer = document.querySelector(".titleContainer");
+  app.titleContainer.innerHTML = `<h2>${app.randomHardPoemTitle}</h2>`;
+};
+
+
+//function to track and display score in hard mode
+const formInput = document.querySelector("form");
+formInput.addEventListener("submit", (event) => {
+  event.preventDefault();
+  app.currentScoreHard = document.querySelector(".currentScoreHard");
+ // app.userAnswer = event.target[0].value; 
+  app.userAnswer = document.getElementById("textBox").value;
+  if (app.userAnswer.toLowerCase() === app.randomHardPoem.author.toLowerCase()) {
+    app.counter = app.counter + 1;
+  } 
+  app.currentScoreHard.innerHTML = `Current score: ${app.counter}/${app.totalQuestions}`;
+
+  document.getElementById("textBox").value = "";
+});
+
+
+
 
 // TO-DO:
 //BUGS: use should be able skip Q, and user should not be able to select next if they havent chosen an option
 // TO-DO:need to use .map() / .filter() to make sure none of the three randomly selected poems have same authors
 // TO-DO: if app.modeId is empty, prompt users to select a dificulty
 
-
-//HARD MODE BEGINS HERE
-app.getHardPoem = () => {
-  
-  fetch("https://poetrydb.org/random")
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    console.log(data);
-    app.randomHardPoem = data[0].title;
-    app.displayRandomPoemHard();
-
-  });
-}
-
-//function that appends a random poem title from the API
-app.displayRandomPoemHard = ()=> {
-  app.titleContainer = document.querySelector(".titleContainer");
-  app.titleContainer.innerHTML = `<h2>${app.randomHardPoem}</h2>`;
-  
-} 
-
-// app.checkHardAnswer = () => {
-//   const userHardInput = 
-// }
-
-const formInput = document.querySelector("form");
-formInput.addEventListener('submit', (event)=> {
-  //event.preventDefault;
-  console.log(event);
-  //console.log(input[id="textbox"].value)
-});
-
-
-//app.submitAnswer = 
-//call a functiont hat appends poem title to the titleContainer class
-// functions that checks us input agains the corresponding author of the poem title we displayed
-// alot a point if user gets correct, user answers 10 questions
-
-
-
-//function to fetch data for random poems
-
-
-//3. provide options of poets
-//correct option to be selected from the poem object
-//use the author endpoint on the api to fetch a random poet using a random index number function
-//use a conditional to denote that if an index has been chosen, dont choose it again
-//4. user to select correct poet
-//attach and event listener to the list of poet options
-// use the target method to discern which button in our list of buttons was pressed
-// use a conditional to check if the button they clicked matches the poet that lives within the poem title object (bubbling thing)
-//4. create a counter to display the user's score. Have it increase and decrese based on users answers
-//if conditional is true counter = counter + 1, else don't move counter
 
 //stretch goals:
 // Hints: display the first few lines of a poem if a user needs a hint
@@ -220,11 +211,14 @@ app.init = () => {
   app.startButton = document.querySelector(".start");
   app.poemTitleContainer = document.querySelector(".poemTitleContainer");
   app.currentScore = document.querySelector(".currentScore");
-app.getHardPoem();
+  app.totalQuestions = 5;
+  app.nextQuestionEasy();
+  app.nextQuestionHard();
+  app.getHardPoem();
   app.restartQuiz();
-
   app.selectMode();
   app.startQuiz();
+
   // app.nextQuestion();
 };
 
