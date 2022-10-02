@@ -175,8 +175,8 @@ app.displayRandomPoemHard = ()=> {
 
 const formInput = document.querySelector("form");
 formInput.addEventListener('submit', (event)=> {
-  event.preventDefault;
-  console.log('test');
+  //event.preventDefault;
+  console.log(event);
   //console.log(input[id="textbox"].value)
 });
 

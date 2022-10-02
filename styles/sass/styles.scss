@@ -1,5 +1,6 @@
 @use "./partials/shared/setup";
 @use "./partials/shared/variables" as *;
+@use "./partials/shared/globalStyles";
 @use "./partials/shared/typographies";
 @use "./partials/landingPage";
 @use "./partials/easyMode";

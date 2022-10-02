@@ -226,6 +226,17 @@ html {
   overflow: hidden;
 }
 
+.wrapper {
+  max-width: 1400px;
+  height: auto;
+  width: 90%;
+  margin: 0 auto;
+}
+
+body {
+  font-family: "Bad Script", cursive;
+}
+
 .landingPage ul {
   display: -webkit-box;
   display: -ms-flexbox;
