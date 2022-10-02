@@ -8,7 +8,7 @@ const app = {};
 // const modes = document.querySelector(".modes");
 // console.log(modes)
 
-// TO-DO:need to use .map() / .filter() to make sure none of the three randomly selected poems have same authors
+
 app.getQuestion = () => {
   fetch("https://poetrydb.org/random/3")
     .then((response) => {
@@ -32,7 +32,7 @@ app.selectMode = () => {
   });
 };
 
-// TO-DO: if app.modeId is empty, prompt users to select a dificulty
+
 app.startQuiz = () => {
   app.counter = 0;
   app.numOfNextClicks = 0;
@@ -146,6 +146,9 @@ app.restartQuiz = () => {
 
 // TO-DO:
 //BUGS: use should be able skip Q, and user should not be able to select next if they havent chosen an option
+// TO-DO:need to use .map() / .filter() to make sure none of the three randomly selected poems have same authors
+// TO-DO: if app.modeId is empty, prompt users to select a dificulty
+
 
 //HARD MODE BEGINS HERE
 app.getHardPoem = () => {
