@@ -1,12 +1,4 @@
 const app = {};
-//poetry quiz app
-//minimum viable product:
-//utilizing poetrydb API fetch a random poem title and display it to page
-//1. create a landing page with app title, description, and a button to start the quiz
-//attach the event lsiter to the parent element of the li's, on click it we will save the event.target
-//event listener on button click that links to quiz page
-// const modes = document.querySelector(".modes");
-// console.log(modes)
 
 app.getQuestion = () => {
   fetch("https://poetrydb.org/random/3")
@@ -31,23 +23,25 @@ app.selectMode = () => {
   });
 };
 
+app.modeContainer = document.querySelector(".modeContainer");
+app.modeContainer.addEventListener("click", (event) => {
+  console.log(event)
+})
+
+
 app.startQuiz = () => {
   app.counter = 0;
   app.numOfNextClicks = 0;
-
   app.getQuestion();
   app.startButton.addEventListener("click", () => {
     app.selectMode();
     // template literals allow us to target IDs on the page using modeId from app.selectMode();
+    console.log(`${app.modeId}Game`)
     document
       .getElementById(`${app.modeId}Game`)
       .scrollIntoView({ behavior: "smooth" });
   });
 };
-
-//2. display a random poem title
-// make a fetch to the random endpoint of the api and grab the title of the poem
-//using .textContent property to get the title into the .titleContainer div
 
 app.displayPoet = () => {
   app.poetContainer = document.querySelector(".poetContainer");
@@ -102,22 +96,23 @@ app.selectionCheck = (event) => {
 //function to make sure the user clicks something before being able to go to next question
 //function that invokes the question tracker when user clicks the next question button
 app.nextQuestionEasy = () => {
-const nextButton = document.querySelector(".next");
-nextButton.addEventListener("click", () => {
-app.questionTracker();
-});
+  app.nextButton = document.querySelector(".next");
+  app.finishButton = document.querySelector(".finish");
+  app.nextButton.addEventListener("click", () => {
+    app.questionTracker();
+  });
 };
 
 app.nextQuestionHard = () => {
-  const nextButton = document.querySelector(".nextHard");
-  console.log(nextButton)
-  nextButton.addEventListener("click", () => {
+  app.nextButton = document.querySelector(".nextHard");
+  app.finishButton = document.querySelector(".finishHard");
+  app.nextButton.addEventListener("click", () => {
     app.getHardPoem();
     app.questionTracker();
   });
 };
 
-app.finishButton = document.querySelector(".finish");
+
 //function that tracks the number of questions answered
 app.questionTracker = () => {
   app.numOfNextClicks = app.numOfNextClicks + 1;
@@ -127,11 +122,8 @@ app.questionTracker = () => {
     app.finalScore.innerHTML = `Your final score is ${app.counter}/${app.totalQuestions}`;
   } else if (app.numOfNextClicks === app.totalQuestions - 1) {
     app.getQuestion();
-    //app.nextButton.textContent = "Finish";
-
     app.finishButton.classList.remove("hidden");
     app.nextButton.classList.add("hidden");
-
     console.log(app.numOfNextClicks);
   } else if (app.numOfNextClicks < app.totalQuestions) {
     app.getQuestion();
@@ -139,13 +131,17 @@ app.questionTracker = () => {
   }
 };
 
+
+// brings 
 app.restartQuiz = () => {
   const restart = document.querySelector(".restart");
   restart.addEventListener("click", () => {
-    console.log("test");
     app.startQuiz();
     app.finishButton.classList.add("hidden");
     app.nextButton.classList.remove("hidden");
+    document
+      .getElementById("landingPage")
+      .scrollIntoView({ behavior: "smooth" });
   });
 };
 
