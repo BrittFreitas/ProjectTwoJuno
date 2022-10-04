@@ -7,24 +7,63 @@ app.getRandomIndex = (array) => {
 
 //add catch error
 app.getPoemInfo = () => {
-  fetch("https://poetrydb.org/random/10")
+  fetch(`https://poetrydb.org/random/${app.totalQuestions * 3 * 2}`)
     .then((response) => {
       return response.json();
     })
     .then((data) => {
-        let poemArray = [];
+      console.log(data)
+        let poemArray = [[]];
+        let poemArrayIndex = 0;
+        let poemObjectIndex = -1;
+        app.questionNumber = 0; //increase question number when you click next
         data.forEach((poem) => {
-          if (poemArray.indexOf(poem.author) === -1 && poemArray.length < 3) {
-            poemArray.push(poem);
+          if (poemArray.length <= app.totalQuestions) {
+            if (poemArray[poemArrayIndex].length === 0) {
+              poemArray[poemArrayIndex].push(poem);
+              poemObjectIndex = poemObjectIndex + 1;
+            } else if (poemArray[poemArrayIndex].length < 3 && poemArray[0][poemObjectIndex].author !== poem.author) {
+              poemArray[poemArrayIndex].push(poem);
+              poemObjectIndex = poemObjectIndex + 1;
+            } else {
+              poemArrayIndex = poemArrayIndex + 1;
+              poemArray.push([]);
+              poemObjectIndex = -1;
+            };
           }
-        });
-      app.poemInfo = data[app.getRandomIndex(poemArray)];
-      app.poetName = app.poemInfo.author;
-      app.displayEasyQuestion();
-      app.displayEasyAnswerOptions(poemArray);
-      app.updateCurrentScoreEasy();
+        }) ;
+        
+        // && poemArray[poemArrayIndex][x].author !== poem.author
+        poemArray.pop();
+        
+
+          //     if (poemArray[poemArrayIndex].indexOf(poem.author) === -1 && poemArray[poemArrayIndex].length < 3) {
+          //     console.log()
+          //   } else {
+          //    console.log()
+          //   }
+          // });
+      
+      console.log(poemArray)
+
+
+      // const poemPool = poemArray[app.questionNumber]
+      // app.poemInfo = poemPool[app.getRandomIndex(poemPool)];
+      // console.log(app.poemInfo)
+
+      // app.poemInfo = data[app.getRandomIndex(poemArray)];
+      // app.poetName = app.poemInfo.author;
+      // app.displayEasyQuestion();
+      // app.displayEasyAnswerOptions(poemArray);
+      // app.updateCurrentScoreEasy();
     });
 };
+
+
+// make an array with 5 objects
+// within each object, there will be 3 poems 
+  //for each object, append only if author does not already exist 
+
 
 // brings user to selected game mode and displays questions
 app.startQuiz = () => {
@@ -189,11 +228,12 @@ app.init = () => {
   app.currentScore = document.querySelector(".currentScore");
   app.totalQuestions = 5;
   app.once = {once: true,};
+  
   app.getPoemInfo();
-  app.startQuiz();
-  app.nextQuestionEasy();
-  // app.getHardPoem();
-  app.restartQuiz();
+  // app.startQuiz();
+  // app.nextQuestionEasy();
+  // // app.getHardPoem();
+  // app.restartQuiz();
 };
 
 app.init();
