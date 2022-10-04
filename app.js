@@ -5,54 +5,24 @@ app.getRandomIndex = (array) => {
   return randomIndex;
 };
 
-// get information from a random poem and add it to app.poemArray if app.poemArray does not already have a poem with the same author 
-
-
-
-// app.getPoemInfo = () => {
-//     fetch("https://poetrydb.org/random")
-//     .then((response) => {
-//       return response.json();
-//     })
-//     .then((data) => {
-//       if (app.poemArray.indexOf(data[0].author) === -1) {
-//         app.poemArray.push(data[0]);
-//       }
-//     });
-// };
-
-// app.getEasyQuestions = () => {
-//   for (let i = 0; i < 3; i = i + 1) {
-//     app.getPoemInfo();
-//   };
-// }
-// app.modeSelectionForm = document.querySelector(".modeSelection");
-// app.modeSelectionForm.addEventListener("submit", (event) => {
-//   event.preventDefault();
-//   app.modeSelected = document.querySelector("input:checked").value;
-//   if (app.modeSelected === "easy") {
-//     console.log("Easy")
-//     app.getEasyQuestions();
-//   } else if (app.modeSelected === "hard") {
-//     console.log("hard")
-//   }
-//     app.poemInfo = app.poemArray[app.getRandomIndex(app.poemArray)];
-//     app.poetName = app.poemInfo.author;
-// });
-
+//add catch error
 app.getPoemInfo = () => {
-  fetch("https://poetrydb.org/random/3")
+  fetch("https://poetrydb.org/random/10")
     .then((response) => {
       return response.json();
     })
     .then((data) => {
-      app.poemArray = data;
-      app.poemInfo = data[app.getRandomIndex(app.poemArray)];
+        let poemArray = [];
+        data.forEach((poem) => {
+          if (poemArray.indexOf(poem.author) === -1 && poemArray.length < 3) {
+            poemArray.push(poem);
+          }
+        });
+      app.poemInfo = data[app.getRandomIndex(poemArray)];
       app.poetName = app.poemInfo.author;
       app.displayEasyQuestion();
-      app.displayEasyAnswerOptions(app.poemArray);
-      app.showEasyCurrentScore();
-      
+      app.displayEasyAnswerOptions(poemArray);
+      app.updateCurrentScoreEasy();
     });
 };
 
@@ -60,73 +30,126 @@ app.getPoemInfo = () => {
 app.startQuiz = () => {
   app.counter = 0;
   app.numOfNextClicks = 0;
-  
-  app.modeSelectionForm.addEventListener("submit", (event) => {
+  const modeSelectionForm = document.querySelector(".modeSelection");
+  modeSelectionForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    app.getPoemInfo;
-    app.modeSelected = document.querySelector("input:checked").value;
-    if (app.modeSelected === "easy") {
+    // app.getPoemInfo();
+    const modeSelected = document.querySelector("input[name='gameMode']:checked").value;
+    if (modeSelected === "easy") {
       console.log("Easy")
       //call functions for easy mode
-    } else if (app.modeSelected === "hard") {
+    } else if (modeSelected === "hard") {
       console.log("hard")
+      // app.nextQuestionHard();
       // call functions for hard mode;
     }
     document
-        .getElementById(`${app.modeSelected}Game`)
+        .getElementById(`${modeSelected}Game`)
         .scrollIntoView({ behavior: "smooth" });
   });
 };
 
 // displays poet name in easy mode
 app.displayEasyQuestion = () => {
-  app.poetContainer = document.querySelector(".poetContainer");
-  app.poetContainer.innerHTML = `<h3>${app.poetName}</h3>`;
+  const poetContainer = document.querySelector(".poetContainer");
+  poetContainer.innerHTML = `<h3>${app.poetName}</h3>`;
 };
 
 // displays 3 poem titles as answer options in easy mode
 app.displayEasyAnswerOptions = (array) => {
-  app.poemTitleContainer.innerHTML = "";
+  // app.poemTitleContainer = document.querySelector(".poemTitleContainer");
+  document.querySelector(".easySubmit").disabled = false;
+  let optionNumber = 0;
   array.forEach((poemInfo) => {
-    const listItem = document.createElement("li");
-    listItem.className = "options";
-    listItem.textContent = `${poemInfo.title}`;
-    app.poemTitleContainer.appendChild(listItem);
+    optionNumber = optionNumber + 1;
+    const poemTitle = poemInfo.title;
+    const poemTitleLabel = document.querySelector(`label[for="option${optionNumber}"]`)
+    poemTitleLabel.textContent = poemTitle;
   });
 };
 
 // updates and display current score after completion of each question in easy mode
-app.showEasyCurrentScore = () => {
-  app.poemTitleContainer.addEventListener("click", (event) => {
-    app.userChoice = event.target;
-    console.log(app.userChoice);
-    app.rightAnswer = event.target.innerText;
-    app.userChoice.classList.remove("correct", "incorrect");
+app.updateCurrentScoreEasy = () => {
+  const easyResponse = document.querySelector(".easyQuestion");
+  easyResponse.addEventListener("submit", (event) => {
+    event.preventDefault();
+    app.selectedAnswer = document.querySelector("input[name='option']:checked");
+    app.selectedPoemTitle = document.querySelector(`label[for="${app.selectedAnswer.id}"]`); 
+    
     app.checkEasyAnswer();
+    document.querySelector(".easySubmit").disabled = true;
     app.currentScore.innerHTML = `Current score: ${app.counter}/${app.totalQuestions}`;
-  }, app.once);
+  });
 };
 
 // checks if user selection is correct/incorrect in easy mode 
 app.checkEasyAnswer = () => {
-  if (app.rightAnswer === app.poemInfo.title) {
+  if (app.selectedPoemTitle.innerText === app.poemInfo.title) {
     console.log("very nice");
     app.counter = app.counter + 1;
     console.log(app.counter);
-    app.userChoice.classList.add("correct");
+    app.selectedPoemTitle.classList.add("correct");
   } else {
     console.log("wrong answer LOSER");
     console.log(app.counter);
-    app.userChoice.classList.add("incorrect");
+    app.selectedPoemTitle.classList.add("incorrect");
   }
 };
 
 // displays next question in easy mode 
 app.nextQuestionEasy = () => {
+  
   app.nextButton = document.querySelector(".next");
   app.finishButton = document.querySelector(".finish");
   app.nextButton.addEventListener("click", () => {
     app.questionTracker();
+    const poemTitleOptions = document.querySelectorAll("label[name='option']");
+    poemTitleOptions.forEach((option) => {
+      console.log(option)
+      option.classList.remove("correct", "incorrect")
+    });
+  });
+};
+
+// get random poem for hard mode
+app.getHardPoem = () => {
+  fetch("https://poetrydb.org/random")
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+
+      app.randomHardPoem = data[0];
+      app.randomHardPoemTitle = app.randomHardPoem.title;
+      app.displayRandomPoemHard();
+    });
+};
+
+// displays random poem title in hard mode 
+app.displayRandomPoemHard = () => {
+  app.titleContainer = document.querySelector(".titleContainer");
+  app.titleContainer.innerHTML = `<h2>${app.randomHardPoemTitle}</h2>`;
+};
+
+// track and display score in hard mode
+const hardAnswer = document.querySelector(".hardQuestion");
+hardAnswer.addEventListener("submit", (event) => {
+  event.preventDefault();
+  app.currentScoreHard = document.querySelector(".currentScoreHard");
+  app.userAnswer = document.getElementById("textBox").value;
+  if (app.userAnswer.toLowerCase() === app.randomHardPoem.author.toLowerCase()) {
+    app.counter = app.counter + 1;
+  } 
+  app.currentScoreHard.innerHTML = `Current score: ${app.counter}/${app.totalQuestions}`;
+  document.getElementById("textBox").value = "";
+});
+
+app.nextQuestionHard = () => {
+  app.nextButton = document.querySelector(".nextHard");
+  app.finishButton = document.querySelector(".finishHard");
+  app.nextButton.addEventListener("click", () => {
+    app.questionTracker();
+    app.getHardPoem();
   });
 };
 
@@ -162,15 +185,15 @@ app.restartQuiz = () => {
 };
 
 app.init = () => {
-  app.modeSelectionForm = document.querySelector(".modeSelection");
-  // app.poemArray = [];
-  app.poemTitleContainer = document.querySelector(".poemTitleContainer");
+  
+  
   app.currentScore = document.querySelector(".currentScore");
   app.totalQuestions = 5;
   app.once = {once: true,};
   app.getPoemInfo();
   app.startQuiz();
   app.nextQuestionEasy();
+  // app.getHardPoem();
   app.restartQuiz();
 };
 
