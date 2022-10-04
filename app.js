@@ -98,7 +98,6 @@ app.checkEasyAnswer = () => {
 
 // displays next question in easy mode 
 app.nextQuestionEasy = () => {
-  
   app.nextButton = document.querySelector(".next");
   app.finishButton = document.querySelector(".finish");
   app.nextButton.addEventListener("click", () => {
