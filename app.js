@@ -15,41 +15,27 @@ app.getPoemInfo = () => {
       console.log(data)
         let poemArray = [[]];
         let poemArrayIndex = 0;
-        let poemObjectIndex = -1;
+        let authorArray = [];
         app.questionNumber = 0; //increase question number when you click next
         data.forEach((poem) => {
           if (poemArray.length <= app.totalQuestions) {
-            if (poemArray[poemArrayIndex].length === 0) {
+            if (poemArray[poemArrayIndex].length < 3 && authorArray.indexOf(poem.author) === -1) {
               poemArray[poemArrayIndex].push(poem);
-              poemObjectIndex = poemObjectIndex + 1;
-            } else if (poemArray[poemArrayIndex].length < 3 && poemArray[0][poemObjectIndex].author !== poem.author) {
-              poemArray[poemArrayIndex].push(poem);
-              poemObjectIndex = poemObjectIndex + 1;
-            } else {
+              authorArray.push(poem.author);
+            } else if (poemArray[poemArrayIndex].length === 3) {
               poemArrayIndex = poemArrayIndex + 1;
               poemArray.push([]);
-              poemObjectIndex = -1;
+              authorArray = [];
             };
           }
-        }) ;
-        
-        // && poemArray[poemArrayIndex][x].author !== poem.author
+        });
         poemArray.pop();
-        
-
-          //     if (poemArray[poemArrayIndex].indexOf(poem.author) === -1 && poemArray[poemArrayIndex].length < 3) {
-          //     console.log()
-          //   } else {
-          //    console.log()
-          //   }
-          // });
-      
-      console.log(poemArray)
+        console.log(poemArray)
 
 
-      // const poemPool = poemArray[app.questionNumber]
-      // app.poemInfo = poemPool[app.getRandomIndex(poemPool)];
-      // console.log(app.poemInfo)
+        const poemPool = poemArray[app.questionNumber]
+        app.poemInfo = poemPool[app.getRandomIndex(poemPool)];
+        console.log(app.poemInfo)
 
       // app.poemInfo = data[app.getRandomIndex(poemArray)];
       // app.poetName = app.poemInfo.author;
