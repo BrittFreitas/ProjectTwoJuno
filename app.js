@@ -12,7 +12,6 @@ app.getPoemInfo = () => {
       return response.json();
     })
     .then((data) => {
-      console.log(data)
         let poemArray = [[]];
         let poemArrayIndex = 0;
         let authorArray = [];
@@ -30,8 +29,6 @@ app.getPoemInfo = () => {
           }
         });
         poemArray.pop();
-        console.log(poemArray)
-
 
         const poemPool = poemArray[app.questionNumber]
         app.poemInfo = poemPool[app.getRandomIndex(poemPool)];
