@@ -1,5 +1,15 @@
 @use "./variables" as *;
 
+html {
+    font-size: 62.5%;
+}
 body {
     font-family: 'Bad Script', cursive;
+    font-size: 3.0rem;
+    h1, h2 {
+    font-size: 6.0rem;
+    color: black;
+    margin-top: 150px;
 }
+}
+

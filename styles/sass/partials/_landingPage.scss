@@ -1,16 +1,68 @@
 @use "./shared/variables" as *;
 
+// .landingPage {
+//     height: 100vh;
+//     ul {
+//         display: flex;
+//         width: 20%;
+//         height: 200px;
+//         justify-content: space-between;
+//         li {
+//             background-color: red;
+//             margin: 20px;
+//         }
+//     }
 
+// }
 .landingPage {
-    ul {
-        display: flex;
-        width: 20%;
-        height: 200px;
-        justify-content: space-between;
-        li {
-            background-color: red;
-            margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    .imgContainer {
+        width: 30%;
+        position: relative;
+
+        img {
+            object-fit: contain;
+            width: 25%;
+            position: absolute;
+            left: 350px;
+            top: -160px;
+           // top: 200px;
+           // transform: scaleX(-1);
         }
     }
-    
+.modeSelection {
+ // width: 50%;
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    align-items: center;
+
+    legend {
+        text-align: center;
+    }
+
+    .modes {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      
+      label {
+        padding: 200px 150px;
+        background-color: rgba(235, 223, 208, 0.557);
+        border-radius: 50px;
+        transition: 0.5s ease;
+        &:hover {
+            transform: scale(1.1); 
+        }
+      }
+    }
+  }
 }
+}
+

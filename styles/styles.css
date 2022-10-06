@@ -228,32 +228,105 @@ html {
 
 .wrapper {
   max-width: 1400px;
-  height: auto;
   width: 90%;
   margin: 0 auto;
 }
 
-body {
-  font-family: "Bad Script", cursive;
+section {
+  height: 100vh;
 }
 
-.landingPage ul {
+button {
+  border-radius: 25px;
+  background-color: transparent;
+  padding: 20px;
+  width: 40%;
+  border: 2px rgb(151, 151, 186) solid;
+}
+
+fieldset {
+  border: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Bad Script", cursive;
+  font-size: 3rem;
+}
+body h1, body h2 {
+  font-size: 6rem;
+  color: black;
+  margin-top: 150px;
+}
+
+.landingPage {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 20%;
-  height: 200px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-.landingPage ul li {
-  background-color: red;
-  margin: 20px;
+.landingPage .imgContainer {
+  width: 30%;
+  position: relative;
 }
-
-h1 {
-  color: blue;
+.landingPage .imgContainer img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 25%;
+  position: absolute;
+  left: 350px;
+  top: -160px;
+}
+.landingPage .modeSelection fieldset {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.landingPage .modeSelection fieldset legend {
+  text-align: center;
+}
+.landingPage .modeSelection fieldset .modes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.landingPage .modeSelection fieldset .modes label {
+  padding: 200px 150px;
+  background-color: rgba(235, 223, 208, 0.557);
+  border-radius: 50px;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.landingPage .modeSelection fieldset .modes label:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .correct {
@@ -271,4 +344,16 @@ h1 {
 
 .modeSelection label {
   margin: 20px 0 20px 20px;
+}
+
+input {
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+}
+
+input:checked + label {
+  color: red;
 }

@@ -184,13 +184,10 @@ formInput.addEventListener("submit", (event) => {
 });
 
 
-
-
 // TO-DO:
 //BUGS: use should be able skip Q, and user should not be able to select next if they havent chosen an option
 // TO-DO:need to use .map() / .filter() to make sure none of the three randomly selected poems have same authors
 // TO-DO: if app.modeId is empty, prompt users to select a dificulty
-
 
 //stretch goals:
 // Hints: display the first few lines of a poem if a user needs a hint
