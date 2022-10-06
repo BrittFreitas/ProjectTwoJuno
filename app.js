@@ -205,3 +205,7 @@ app.init();
 // TO-DO:need to use .map() / .filter() to make sure none of the three randomly selected poems have same authors
 // TO-DO: if app.modeId is empty, prompt users to select a dificulty
 //need to remove correct/incorrect classes when user restarts quiz 
+
+//go through an reconnect variable names to match our new fetch
+// deconstructing thing on some pathways 
+//styling
