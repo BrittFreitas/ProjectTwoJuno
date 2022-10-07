@@ -246,14 +246,6 @@ section {
   height: 100vh;
 }
 
-button {
-  border-radius: 25px;
-  background-color: transparent;
-  padding: 20px;
-  width: 40%;
-  border: 2px rgb(151, 151, 186) solid;
-}
-
 fieldset {
   border: none;
 }
@@ -274,6 +266,10 @@ body h1, body h2 {
 }
 body h3 {
   font-size: 5rem;
+}
+
+button {
+  font-family: "Bad Script", cursive;
 }
 
 .landingPage {
@@ -316,6 +312,13 @@ body h3 {
 .landingPage .modeSelection fieldset legend {
   text-align: center;
 }
+.landingPage .modeSelection fieldset .start {
+  border-radius: 25px;
+  background-color: transparent;
+  padding: 20px;
+  width: 40%;
+  border: 2px rgb(210, 129, 107) solid;
+}
 .landingPage .modeSelection fieldset .modes {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -331,14 +334,17 @@ body h3 {
       -ms-flex-direction: row;
           flex-direction: row;
 }
+.landingPage .modeSelection fieldset .modes .modeInputs {
+  visibility: hidden;
+}
 .landingPage .modeSelection fieldset .modes label {
   padding: 200px 150px;
-  background-color: rgba(235, 223, 208, 0.557);
+  background-color: rgb(255, 210, 181);
   border-radius: 50px;
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
 }
-.landingPage .modeSelection fieldset .modes label:hover {
+.landingPage .modeSelection fieldset .modes label:hover, .landingPage .modeSelection fieldset .modes label:focus {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
@@ -351,7 +357,8 @@ body h3 {
   background-color: red;
 }
 
-.hardGame {
+
+.easyGame {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -359,6 +366,12 @@ body h3 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+    text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+ .hardGame {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -459,14 +472,88 @@ body h3 {
   background-color: green;
 }
 
-body {
-  background-image: url("../assets/background-gbafd6026a_1280.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+.easyGame h2.easyGameTitle {
+  margin: 0;
 }
 
-.incorrect {
-  background-color: red;
+.buttonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  gap: 20px;
+}
+.buttonContainer .easySubmit {
+  background-color: #FF9A76;
+  margin-top: 15px;
+}
+.buttonContainer .easySubmit:hover, .buttonContainer .easySubmit:focus {
+  background-color: #FFB395;
+  color: white;
+}
+.buttonContainer .next {
+  background-color: #679B9B;
+}
+.buttonContainer .next:hover, .buttonContainer .next:focus {
+  background-color: #9BC5C5;
+  color: white;
+}
+.buttonContainer .next, .buttonContainer .easySubmit {
+  width: 300px;
+  border-radius: 25px;
+  padding: 20px;
+  border: none;
+  -webkit-transition: 0.5 ease;
+  transition: 0.5 ease;
+}
+
+.poemTitleContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 7px;
+}
+.poemTitleContainer input {
+  visibility: hidden;
+}
+.poemTitleContainer .easyOption {
+  padding: 40px;
+  gap: 20px;
+  background-color: #FFD2B5;
+  border-radius: 25px;
+  width: 50%;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.poemTitleContainer .easyOption:hover, .poemTitleContainer .easyOption:focus {
+  -webkit-box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+          box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+input:checked + label {
+  -webkit-box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+          box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
 }
 
 .hidden {
