@@ -40,10 +40,6 @@ app.getPoemInfo = () => {
     });
 };
 
-// make an array with 5 objects
-// within each object, there will be 3 poems
-//for each object, append only if author does not already exist
-
 // brings user to selected game mode and displays questions
 app.events = () => {
   //startQuiz begins here
@@ -146,25 +142,21 @@ app.events = () => {
     currentScore.innerHTML = `Current score: ${app.counter}/${app.totalQuestions}`;
     document.getElementById("textBox").value = "";
   });
-  // hardAnswer.addEventListener("submit", (event) => {
-  //   event.preventDefault();
-  //   console.log(event);
-  //   // const currentScore = document.querySelector(".currentScoreHard");
-  //   // const userAnswer = document.getElementById("textBox").value;
-  //   // if (userAnswer.toLowerCase() === app.poemInfo.author.toLowerCase()) {
-  //   //   app.counter = app.counter + 1;
-  //   // }
-  //   // currentScore.innerHTML = `Current score: ${app.counter}/${app.totalQuestions}`;
-  //   // document.getElementById("textBox").value = "";
-  // });
 
   // finish quiz 
+  app.finishButton.addEventListener("click", () => {
+    const finalScore = document.querySelector(".finalScore");
+    finalScore.innerHTML = `Your final score is ${app.counter}/${app.totalQuestions}`;
     //hide all sections and bring user to end page 
+  });
+    
+    
 
 
   // restart quiz 
   const restart = document.querySelector(".restart");
   restart.addEventListener("click", () => {
+    app.getPoemInfo();
     app.finishButton.classList.add("hidden");
     app.nextButton.classList.remove("hidden");
 
@@ -210,11 +202,7 @@ app.nextQuestionHard = () => {
 // tracks the number of questions answered
 app.questionTracker = () => {
   app.numOfNextClicks = app.numOfNextClicks + 1;
-  if (app.numOfNextClicks >= app.totalQuestions) {
-    console.log(app.numOfNextClicks);
-    app.finalScore = document.querySelector(".finalScore");
-    app.finalScore.innerHTML = `Your final score is ${app.counter}/${app.totalQuestions}`;
-  } else if (app.numOfNextClicks === app.totalQuestions - 1) {
+  if (app.numOfNextClicks === app.totalQuestions - 1) {
     app.displayEasyQuestion();
     app.displayEasyAnswerOptions(app.poemPool);
     app.finishButton.classList.remove("hidden");
@@ -229,23 +217,16 @@ app.questionTracker = () => {
 
 
 app.init = () => {
-  
   app.totalQuestions = 5;
   app.once = { once: true };
   app.events();
-
   app.getPoemInfo();
-  // app.startQuiz();
-  // app.nextQuestionEasy();
-  // // app.getHardPoem();
-  // app.restartQuiz();
 };
 
 app.init();
 
 // TO-DO:
-//BUGS: use should be able skip Q, and user should not be able to select next if they havent chosen an option
-// TO-DO:need to use .map() / .filter() to make sure none of the three randomly selected poems have same authors
+
 // TO-DO: if app.modeId is empty, prompt users to select a dificulty
 //need to remove correct/incorrect classes when user restarts quiz
 
