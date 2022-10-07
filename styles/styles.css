@@ -232,6 +232,10 @@ html {
   margin: 0 auto;
 }
 
+label {
+  cursor: pointer;
+}
+
 body {
   background-image: url("../assets/background-gbafd6026a_1280.png");
   background-repeat: no-repeat;
@@ -253,11 +257,15 @@ html {
 body {
   font-family: "Bad Script", cursive;
   font-size: 3rem;
+  color: #2d3a3a;
 }
 body h1, body h2 {
   font-size: 6rem;
-  color: black;
   margin-top: 150px;
+  font-weight: bold;
+}
+body h3 {
+  font-size: 5rem;
 }
 
 button {
@@ -349,6 +357,7 @@ button {
   background-color: red;
 }
 
+
 .easyGame {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -357,11 +366,112 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  text-align: center;
+    text-align: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
+ .hardGame {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 90%;
+}
+.hardGame h2 {
+  color: #2d3a3a;
+  font-size: 10rem;
+  margin-bottom: 250px;
+}
+.hardGame h2 .underline {
+  border-bottom: 10px solid #2d3a3a;
+}
+.hardGame h3 {
+  font-size: 5rem;
+}
+
+.hardQuestion {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+}
+.hardQuestion input {
+  all: unset;
+  background-color: white;
+  border-radius: 50px;
+  width: 80%;
+  padding-left: 25px;
+  margin: 25px;
+}
+.hardQuestion input:hover, .hardQuestion input:focus {
+  outline: 5px solid #ffd2b5;
+}
+.hardQuestion input::-webkit-input-placeholder {
+  padding: 100px;
+}
+.hardQuestion input::-moz-placeholder {
+  padding: 100px;
+}
+.hardQuestion input:-ms-input-placeholder {
+  padding: 100px;
+}
+.hardQuestion input::-ms-input-placeholder {
+  padding: 100px;
+}
+.hardQuestion input::placeholder {
+  padding: 100px;
+}
+.hardQuestion .hardSubmit {
+  border: none;
+  color: #503f39;
+  background-color: #ff9a76;
+  margin: 25px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.hardQuestion .hardSubmit:hover, .hardQuestion .hardSubmit:focus, .hardQuestion .hardSubmit:disabled {
+  background-color: #ffb395;
+  color: white;
+}
+
+.resultContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 80%;
+  padding: 25px;
+  margin-bottom: 20%;
+}
+.resultContainer button {
+  border: none;
+  background-color: #679b9b;
+  color: #2d3a3a;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 300px;
+}
+.resultContainer button:hover, .resultContainer button:focus {
+  background-color: #9bc5c5;
+  color: white;
+}
+.resultContainer .currentScoreHard {
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.correct {
+  background-color: green;
+}
+
 .easyGame h2.easyGameTitle {
   margin: 0;
 }

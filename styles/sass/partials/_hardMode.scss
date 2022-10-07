@@ -1,1 +1,86 @@
 @use "./shared/variables" as *;
+
+// input {
+//     visibility:hidden;
+// }
+
+
+
+// input:checked + label {
+//     color: red;
+// }
+
+.hardGame {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    h2 {
+        color: $veryDarkTeal;
+        font-size: 10rem;
+        margin-bottom: 250px;
+        .underline {
+            border-bottom: 10px solid $veryDarkTeal;
+        }
+    }
+    h3 {
+        font-size: 5rem;
+    }
+}
+
+.hardQuestion {
+    display: flex;
+    width: 80%;
+
+    input {
+        all: unset;
+        background-color: white;
+        border-radius: 50px;
+        width: 80%;
+        padding-left: 25px;
+        margin: 25px;
+        &:hover, &:focus {
+            outline: 5px solid $medOrange;
+        }
+        &::placeholder {
+            padding: 100px;
+        }
+    }
+
+    .hardSubmit {
+        border: none;
+        color: $darkBrown;
+        background-color: $darkOrange;
+        margin: 25px;
+        transition: 0.3s;
+        &:hover, &:focus, &:disabled {
+            background-color: #ffb395;
+            color: white;
+        }
+    }
+}
+
+.resultContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    padding: 25px;
+    margin-bottom: 20%;
+    button {
+        // align-self: flex-start;
+        border: none;
+        background-color: $teal;
+        color: $veryDarkTeal;
+        transition: 0.3s;
+        width: fit-content;
+        min-width: 300px;
+        &:hover, &:focus {
+            background-color: $lightTeal;
+            color: white;
+        }
+    }
+    .currentScoreHard {
+        align-self: center;
+    }
+}

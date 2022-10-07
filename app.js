@@ -203,7 +203,7 @@ app.displayHardPoem = () => {
   app.poemPool = app.poemArray[app.questionNumber];
   app.poemInfo = app.poemPool[app.getRandomIndex(app.poemPool)];
   const titleContainer = document.querySelector(".titleContainer");
-  titleContainer.innerHTML = `<h2>${app.poemInfo.title}</h2>`;
+  titleContainer.innerHTML = `<h3>${app.poemInfo.title}</h3>`;
 };
 
 // tracks the number of questions answered
