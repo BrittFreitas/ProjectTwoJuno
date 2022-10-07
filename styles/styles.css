@@ -232,6 +232,12 @@ html {
   margin: 0 auto;
 }
 
+body {
+  background-image: url("../assets/background-gbafd6026a_1280.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 section {
   height: 100vh;
 }
@@ -337,9 +343,26 @@ body h1, body h2 {
   background-color: red;
 }
 
+.correct {
+  background-color: green;
+}
+
+body {
+  background-image: url("../assets/background-gbafd6026a_1280.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.incorrect {
+  background-color: red;
+}
+
 .hidden {
   display: none;
-  background-color: pink;
+}
+
+.invisible {
+  display: none;
 }
 
 .modeSelection label {

@@ -12,30 +12,31 @@
     background-color: green;
 }
 
+body {
+    background-image: url("../assets/background-gbafd6026a_1280.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
 .incorrect {
     background-color: red;
 }
 
 .hidden {
     display: none;
-    background-color: pink;
 }
 
+.invisible {
+    display: none;
+}
 .modeSelection{
     label {
         margin: 20px 0 20px 20px;
     }
 }
 
-// input {
-//     visibility:hidden;
-// }
 
 label {
     cursor: pointer;
 }
-
-// input:checked + label {
-//     color: red;
-// }
 

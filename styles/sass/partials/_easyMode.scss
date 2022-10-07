@@ -1,4 +1,11 @@
 @use "./shared/variables" as *;
 
 
+.correct {
+    background-color: green;
+}
 
+
+.incorrect {
+    background-color: red;
+}
