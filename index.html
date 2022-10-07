@@ -19,7 +19,7 @@
   </head>
 
   <body>
-    <section class="landingPage wrapper" id="landingPage">
+    <section class="landingPage wrapper invisible" id="landingPage">
       <h1>Poetry Trivia</h1> 
       <div class="imgContainer">
         <img src="./assets/abstract-ga00742724_1280.png" alt="graphic of feather pen in ink"></div>
@@ -43,12 +43,11 @@
       <p></p>
       <div class="poetContainer"></div>
       <div>
-        <!-- <div class="poemTitleContainer"> -->
           <form class="easyQuestion">
             
             <fieldset class="poemTitleContainer">
               <legend hidden>Choose your answer</legend>
-              <label name = "option" for="option1">option1lavel</label>
+              <label name = "option" for="option1">option1</label>
               <input type="radio" name="option" id="option1" value="option1" required>
               <label name = "option" for="option2">option2</label>
               <input type="radio" name="option" id="option2" value="option2">
@@ -58,22 +57,17 @@
             </fieldset>
             
           </form>
-        <!-- </div> -->
         <div class="resultContainer">
-          <!-- <div class="checkOrX">
-          </div> -->
-          
-
           <div class="currentScore"></div>
-        </div>
+
       </div>
       <button class="next">Next</button>
       
-      <a href="#endPage" class="button finish hidden">Finish Quiz</a>
+      <button class="finish hidden">Finish Quiz</button>
     </section>
 
-    <section class="hardGame wrapper invisible" id="hardGame">
-      <h2>Poetry Trivia</h2>
+    <section class="hardGame wrapper" id="hardGame">
+      <h2><span class="underline">Poe</span>try Trivia <i class="fa-solid fa-feather-pointed"></i></h2>
       
       <div class="titleContainer"></div>
       <form class = "hardQuestion" action="submit">
@@ -81,19 +75,20 @@
         <input
           required
           type="text"
-          placeholder="insert poet name here"
+          placeholder="who is this poem by?"
           class="textBox"
           name="textBox"
           id="textBox"
         />
-        <button type="submit" class="submit hardSubmit">Submit</button>
+        <button type="submit" class="hardSubmit">Submit Answer</button>
       </form>
-      <button class="nextHard">Next</button>
+      
       <div class="resultContainer">
-        <div class="checkOrX"></div>
+        <button class="nextHard">Next</button>
+        <button class="finishHard hidden">Finish Quiz</button>
         <div class="currentScoreHard"></div>
       </div>
-      <a href="#endPage" class="button finishHard hidden">Finish Quiz</a>
+      
     </section>
 
     <section class="endPage wrapper invisible" id="endPage">

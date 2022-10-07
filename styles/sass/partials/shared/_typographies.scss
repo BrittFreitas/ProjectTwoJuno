@@ -3,13 +3,21 @@
 html {
     font-size: 62.5%;
 }
+
 body {
     font-family: 'Bad Script', cursive;
     font-size: 3.0rem;
+    color: $veryDarkTeal;
+
     h1, h2 {
     font-size: 6.0rem;
-    color: black;
     margin-top: 150px;
-}
+    font-weight: bold;
+    }
+
+    h3 {
+        font-size: 5.0rem;
+    }
+
 }
 
