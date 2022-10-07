@@ -15,54 +15,62 @@
 
 // }
 .landingPage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  .imgContainer {
+    width: 30%;
+    position: relative;
 
-    .imgContainer {
-        width: 30%;
-        position: relative;
-
-        img {
-            object-fit: contain;
-            width: 25%;
-            position: absolute;
-            left: 350px;
-            top: -160px;
-           // top: 200px;
-           // transform: scaleX(-1);
-        }
+    img {
+      object-fit: contain;
+      width: 25%;
+      position: absolute;
+      left: 350px;
+      top: -160px;
+      // top: 200px;
+      // transform: scaleX(-1);
     }
-.modeSelection {
- // width: 50%;
-  fieldset {
-    display: flex;
-    flex-direction: column;
-    border: none;
-    align-items: center;
-
-    legend {
-        text-align: center;
-    }
-
-    .modes {
+  }
+  .modeSelection {
+    // width: 50%;
+    fieldset {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      border: none;
       align-items: center;
-      flex-direction: row;
-      
-      label {
-        padding: 200px 150px;
-        background-color: rgba(235, 223, 208, 0.557);
-        border-radius: 50px;
-        transition: 0.5s ease;
-        &:hover {
-            transform: scale(1.1); 
+
+      legend {
+        text-align: center;
+      }
+      .start {
+        border-radius: 25px;
+        background-color: transparent;
+        padding: 20px;
+        width: 40%;
+        border: 2px rgb(210, 129, 107) solid;
+    }
+    
+      .modes {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+
+        .modeInputs {
+          visibility: hidden;
+        }
+        label {
+          padding: 200px 150px;
+          background-color: rgb(255,210,181);
+          border-radius: 50px;
+          transition: 0.5s ease;
+          &:hover, &:focus{
+            transform: scale(1.1);
+          }
         }
       }
     }
   }
 }
-}
-
