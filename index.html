@@ -19,7 +19,7 @@
   </head>
 
   <body>
-    <section class="landingPage wrapper invisible" id="landingPage">
+    <section class="landingPage wrapper" id="landingPage">
       <h1>Poetry Trivia</h1> 
       <div class="imgContainer">
         <img src="./assets/abstract-ga00742724_1280.png" alt="graphic of feather pen in ink"></div>
@@ -27,10 +27,12 @@
         <fieldset>
           <legend>Select your difficulty level</legend>
           <div class="modes"> 
+            
+            <input class="modeInputs" type="radio" name="gameMode" id="easy" value="easy" required>
             <label for="easy">Easy Mode</label>
-            <input type="radio" name="gameMode" id="easy" value="easy" required>
+            
+            <input class="modeInputs" type="radio" name="gameMode" id="hard" value="hard">
             <label for="hard">Hard Mode</label>
-            <input type="radio" name="gameMode" id="hard" value="hard">
           </div>
           <button type="submit" class="start">Start</button>
         </fieldset>
@@ -39,34 +41,43 @@
     </section>
 
     <section class="easyGame wrapper invisible" id="easyGame">
-      <h2>Poetry Trivia</h2>
+      <h2 class="easyGameTitle">Poetry Trivia</h2>
       <p></p>
       <div class="poetContainer"></div>
-      <div>
+      <div class="easyContainer">
+        <!-- <div class="poemTitleContainer"> -->
           <form class="easyQuestion">
             
             <fieldset class="poemTitleContainer">
               <legend hidden>Choose your answer</legend>
-              <label name = "option" for="option1">option1</label>
               <input type="radio" name="option" id="option1" value="option1" required>
-              <label name = "option" for="option2">option2</label>
-              <input type="radio" name="option" id="option2" value="option2">
-              <label name = "option" for="option3">option3</label>
+              <label class="easyOption" name = "option" for="option1">option1lavel</label>
+             <input type="radio" name="option" id="option2" value="option2">
+              <label  class="easyOption" name = "option" for="option2">option2</label>
               <input type="radio" name="option" id="option3" value="option3">
+              <label  class="easyOption" name = "option" for="option3">option3</label>
+              <div class="buttonContainer">
               <button type="submit" class="easySubmit">Submit Answer</button>
+              <button class="next">Next</button>
+            </div>
             </fieldset>
             
           </form>
+        <!-- </div> -->
         <div class="resultContainer">
-          <div class="currentScore"></div>
+          <!-- <div class="checkOrX">
+          </div> -->
+          
 
+          <div class="currentScore"></div>
+        </div>
       </div>
-      <button class="next">Next</button>
       
-      <button class="finish hidden">Finish Quiz</button>
+      
+      <a href="#endPage" class="button finish hidden">Finish Quiz</a>
     </section>
 
-    <section class="hardGame wrapper" id="hardGame">
+    <section class="hardGame wrapper invisible" id="hardGame">
       <h2><span class="underline">Poe</span>try Trivia <i class="fa-solid fa-feather-pointed"></i></h2>
       
       <div class="titleContainer"></div>
