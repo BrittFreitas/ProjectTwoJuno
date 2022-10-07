@@ -8,19 +8,7 @@
 @use "./partials/endPage";
 @use "./partials/shared/mediaQueries";
 
-.correct {
-    background-color: green;
-}
 
-body {
-    background-image: url("../assets/background-gbafd6026a_1280.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-.incorrect {
-    background-color: red;
-}
 
 .hidden {
     display: none;

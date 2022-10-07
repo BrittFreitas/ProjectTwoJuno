@@ -28,9 +28,9 @@
           <legend>Select your difficulty level</legend>
           <div class="modes"> 
             <label for="easy">Easy Mode</label>
-            <input type="radio" name="gameMode" id="easy" value="easy" required>
+            <input class="modeInputs" type="radio" name="gameMode" id="easy" value="easy" required>
             <label for="hard">Hard Mode</label>
-            <input type="radio" name="gameMode" id="hard" value="hard">
+            <input class="modeInputs" type="radio" name="gameMode" id="hard" value="hard">
           </div>
           <button type="submit" class="start">Start</button>
         </fieldset>
@@ -39,22 +39,25 @@
     </section>
 
     <section class="easyGame wrapper invisible" id="easyGame">
-      <h2>Poetry Trivia</h2>
+      <h2 class="easyGameTitle">Poetry Trivia</h2>
       <p></p>
       <div class="poetContainer"></div>
-      <div>
+      <div class="easyContainer">
         <!-- <div class="poemTitleContainer"> -->
           <form class="easyQuestion">
             
             <fieldset class="poemTitleContainer">
               <legend hidden>Choose your answer</legend>
-              <label name = "option" for="option1">option1lavel</label>
               <input type="radio" name="option" id="option1" value="option1" required>
-              <label name = "option" for="option2">option2</label>
-              <input type="radio" name="option" id="option2" value="option2">
-              <label name = "option" for="option3">option3</label>
+              <label class="easyOption" name = "option" for="option1">option1lavel</label>
+             <input type="radio" name="option" id="option2" value="option2">
+              <label  class="easyOption" name = "option" for="option2">option2</label>
               <input type="radio" name="option" id="option3" value="option3">
+              <label  class="easyOption" name = "option" for="option3">option3</label>
+              <div class="buttonContainer">
               <button type="submit" class="easySubmit">Submit Answer</button>
+              <button class="next">Next</button>
+            </div>
             </fieldset>
             
           </form>
@@ -67,7 +70,7 @@
           <div class="currentScore"></div>
         </div>
       </div>
-      <button class="next">Next</button>
+      
       
       <a href="#endPage" class="button finish hidden">Finish Quiz</a>
     </section>
