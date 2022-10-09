@@ -1,19 +1,6 @@
 @use "./shared/variables" as *;
 
-// .landingPage {
-//     height: 100vh;
-//     ul {
-//         display: flex;
-//         width: 20%;
-//         height: 200px;
-//         justify-content: space-between;
-//         li {
-//             background-color: red;
-//             margin: 20px;
-//         }
-//     }
 
-// }
 .landingPage {
   display: flex;
   flex-direction: column;
@@ -50,7 +37,7 @@
         padding: 20px;
         width: 40%;
         border: 2px rgb(210, 129, 107) solid;
-      }
+    }
     
       .modes {
         display: flex;
