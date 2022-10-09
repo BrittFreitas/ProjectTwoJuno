@@ -20,27 +20,24 @@
 
   <body>
     <header>
-      <h1>Poetry Trivia <i class="fa-solid fa-feather-pointed"></i></h1>
+      <h1>Poetry Trivia </h1>
+      <img class="logo" src="./assets/abstract-ga00742724_1280.png" alt="graphic of feather pen in ink">
     </header>
     <div class = "stackTop loading">
       <i class="fa-sharp fa-solid fa-feather-pointed fa-xl loadingIcon"></i>
     </div>
 
     <section class="landingPage wrapper invisible" id="landingPage">
-      <h1>Poetry Trivia</h1> 
-      <div class="imgContainer">
-        <img src="./assets/abstract-ga00742724_1280.png" alt="graphic of feather pen in ink">
-      </div> <!-- .imageContainer-->
       <form class="modeSelection">
         <fieldset>
           <legend>Select your difficulty level</legend>
           <div class="modes"> 
-            <input class="modeInputs" type="radio" name="gameMode" id="easy" value="easy" required>
-            <label for="easy">Easy Mode</label>
+            <input class="modeInputs " type="radio" name="gameMode" id="easy" value="easy" required>
+            <label class="easyBox" for="easy">Easy Mode</label>
             <input class="modeInputs" type="radio" name="gameMode" id="hard" value="hard">
-            <label for="hard">Hard Mode</label>
+            <label class="hardBox" for="hard">Hard Mode</label>
           </div> <!-- .modes-->
-          <button type="submit" class="start">Start</button>
+          <button type="submit" class="startButton">Start</button>
         </fieldset>
       </form> <!-- .modeSelection-->
     </section> <!-- .landingPage-->
@@ -98,7 +95,7 @@
     </section> <!-- .endPage-->
 
     <footer>
-      <p>Created by Britt Freitas and Tina Lu</p>
+      <p class="footerText">Created by Britt Freitas and Tina Lu</p>
     </footer>
     <script src="app.js"></script>
   </body>
