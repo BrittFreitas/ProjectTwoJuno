@@ -273,10 +273,7 @@ button {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   border-radius: 25px;
-  width: 300px;
-  min-width: -webkit-fit-content;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
+  width: clamp(250px, 17.5vw, 300px);
 }
 .submit:hover, .submit:focus {
   background-color: #ffb395;
@@ -294,7 +291,7 @@ button {
   color: #2d3a3a;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
-  min-width: 300px;
+  width: clamp(250px, 17.5vw, 300px);
 }
 .nextButton:hover, .nextButton:focus, .finishButton:hover, .finishButton:focus, .startButton:hover, .startButton:focus, .restart:hover, .restart:focus {
   background-color: #9bc5c5;
