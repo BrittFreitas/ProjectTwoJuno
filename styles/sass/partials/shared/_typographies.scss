@@ -5,20 +5,19 @@ html {
 }
 
 body {
-    font-family: 'Bad Script', cursive;
+    font-family: 'Bad Script', cursive, sans-serif;
     font-size: 3.0rem;
     color: $veryDarkTeal;
+}
 
-    h1, h2 {
+h1, h2 {
     font-size: 6.0rem;
-    margin-top: 150px;
+    // margin-top: 150px;
     font-weight: bold;
-    }
+}
 
-    h3 {
-        font-size: 5.0rem;
-    }
-
+h3 {
+    font-size: 5.0rem;
 }
 
 button {

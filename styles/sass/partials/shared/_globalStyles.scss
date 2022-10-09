@@ -1,8 +1,31 @@
 @use "./variables" as *;
 
+body {
+    background-image: url("../assets/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    section {
+        height: 75vh;
+    }
+}
+
+header {
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        color: $veryDarkTeal;
+        font-size: 10rem;
+        // text-align: center;
+        // margin: 10rem;
+    }
+}
+
 .wrapper {
     max-width: 1400px;
-    //height: auto;
     width: 90%;
     margin: 0 auto;
 }
@@ -11,17 +34,70 @@ label {
     cursor: pointer;
 }
 
-body {
-    background-image: url("../assets/background-gbafd6026a_1280.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-section {
-    height: 100vh;
-}
-
-
 fieldset {
     border: none;
+}
+
+button {
+    height: clamp(50px, 0.5vh, 75px);
+}
+
+.submit {
+    border: none;
+    color: $darkBrown;
+    background-color: $darkOrange;
+    height: 75px;
+    text-align: center;
+    transition: 0.3s;
+    border-radius: 25px;
+    width: 300px;
+    min-width: fit-content;
+    &:hover, &:focus {
+        background-color: #ffb395;
+        color: white;
+    }
+    &:disabled {
+        background-color: gray;
+    }
+}
+
+.nextButton, .finishButton {
+    border-radius: 25px;
+    border: none;
+    background-color: $teal;
+    color: $veryDarkTeal;
+    transition: 0.3s;
+    min-width: 300px;
+    &:hover, &:focus {
+        background-color: $lightTeal;
+        color: white;
+    }
+}
+
+footer {
+    background-color: white;
+    bottom: 0;
+}
+
+.stackTop {
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(50vh);
+    .loadingIcon {
+        animation: spin 1.3s infinite linear;
+        width: 2em;
+        height: 2em;
+        position: absolute;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
