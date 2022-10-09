@@ -50,10 +50,13 @@
         &::placeholder {
             color: $darkOrange;
         }
+<<<<<<< HEAD
        
         @include tablet {
         height: 50%;
         }
+=======
+>>>>>>> 3a12f8db186435f091963a020abd2f7117ebd376
     }
 }
 
@@ -80,5 +83,18 @@
         @include tablet {
             margin-top: 20px;
         }
+    }
+}
+
+
+.hardQuestion {
+    .correct {
+        border: 5px solid $correct;
+    }
+    .incorrect {
+        input[type="text"] {
+             border: 5px solid $incorrect;
+        }
+       
     }
 }

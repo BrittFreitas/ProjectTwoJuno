@@ -273,7 +273,7 @@ button {
 .submit {
   border: none;
   color: #503f39;
-  background-color: #ff9a76;
+  background-color: #ffd2b5;
   height: 75px;
   text-align: center;
   -webkit-transition: 0.3s;
@@ -293,7 +293,7 @@ button {
   color: white;
 }
 
-.nextButton, .finishButton, .startButton {
+.nextButton, .finishButton, .startButton, .restart {
   border-radius: 25px;
   border: none;
   background-color: #679b9b;
@@ -302,7 +302,7 @@ button {
   transition: 0.3s ease;
   min-width: 300px;
 }
-.nextButton:hover, .nextButton:focus, .finishButton:hover, .finishButton:focus, .startButton:hover, .startButton:focus {
+.nextButton:hover, .nextButton:focus, .finishButton:hover, .finishButton:focus, .startButton:hover, .startButton:focus, .restart:hover, .restart:focus {
   background-color: #9bc5c5;
   color: white;
 }
@@ -491,12 +491,6 @@ button {
   pointer-events: none;
   outline: none;
 }
-.easyGame .easySubmit {
-  background-color: #ffd2b5;
-}
-.easyGame .easySubmit:disabled {
-  background-color: #d3d8d8;
-}
 
 .poemTitleContainer {
   display: -webkit-box;
@@ -525,12 +519,18 @@ button {
   background-color: white;
   border-radius: 25px;
   width: 65%;
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 .poemTitleContainer .easyOption:hover, .poemTitleContainer .easyOption:focus {
   -webkit-box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
           box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+.poemTitleContainer .correct {
+  border: 5px solid #89c2a0;
+}
+.poemTitleContainer .incorrect {
+  border: 5px solid #ff8676;
 }
 .poemTitleContainer .resultContainer {
   display: -webkit-box;
@@ -576,15 +576,6 @@ button {
   gap: 20px;
   margin-top: 25px;
   width: 65%;
-}
-
-.poemTitleContainer .correct {
-  border: 5px solid #89c2a0;
-}
-.poemTitleContainer .incorrect {
-  border: 2px solid white;
-  border-style: inset;
-  background-color: #ff8676;
 }
 
 .hardGame {
@@ -713,6 +704,48 @@ button {
   .resultContainer .currentScoreHard {
     margin-top: 20px;
   }
+}
+
+.hardQuestion .correct {
+  border: 5px solid #89c2a0;
+}
+.hardQuestion .incorrect input[type=text] {
+  border: 5px solid #ff8676;
+}
+
+.endPage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.endPage .finalContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: 50vh;
+  background-color: white;
+  border-radius: 50px;
+  width: 50%;
+  height: 75%;
+}
+.endPage .finalContent .restart {
+  margin-bottom: 50px;
 }
 
 .invisible {

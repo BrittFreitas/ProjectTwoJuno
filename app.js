@@ -58,6 +58,7 @@ const apiPromise = fetch(`https://poetrydb.org/random/${app.totalQuestions * 3 *
 
 apiPromise.then(() => {
   app.landingPage.classList.remove("invisible");
+  app.footer.classList.remove("invisible");
   const loadingIcon = document.querySelector(".loadingIcon");
   loadingIcon.classList.add("invisible");
 });
@@ -263,6 +264,7 @@ app.init = () => {
   app.easyGame = document.querySelector(".easyGame");
   app.hardGame = document.querySelector(".hardGame");
   app.endPage = document.querySelector(".endPage");
+  app.footer = document.querySelector("footer");
   app.allOptions = document.querySelectorAll("input[name='option']");
   app.totalQuestions = 5;
   
