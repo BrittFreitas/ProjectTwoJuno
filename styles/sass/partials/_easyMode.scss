@@ -52,19 +52,19 @@ justify-content: center;
     }
 
     .resultContainer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 65%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 65%;
 
-        @include tablet {
-            display: flex;
-            flex-direction: column;
+      @include tablet {
+          display: flex;
+          flex-direction: column;
 
-            .currentScore {
-                margin-top: 20px;
-            }
-        }
+          .currentScore {
+              margin-top: 20px;
+          }
+      }
     }
 
     .buttonContainer {

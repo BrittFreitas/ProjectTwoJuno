@@ -115,7 +115,7 @@ app.displayEasyQuestion = () => {
   app.poemInfo = app.poemPool[app.getRandomIndex(app.poemPool)];
   app.poetName = app.poemInfo.author;
   const poetContainer = document.querySelector(".poetContainer");
-  poetContainer.innerHTML = `<h3>${app.poetName}</h3>`;
+  poetContainer.innerHTML = `<h2>${app.poetName}</h2>`;
   document.querySelector(".easySubmit").removeAttribute("disabled", "");
     app.allOptions.forEach((option) => {
       option.removeAttribute("disabled", "");
@@ -171,7 +171,7 @@ app.displayHardPoem = () => {
   app.poemInfo = app.poemPool[app.getRandomIndex(app.poemPool)];
   
   const titleContainer = document.querySelector(".titleContainer");
-  titleContainer.innerHTML = `<h3>${app.poemInfo.title}</h3>`;
+  titleContainer.innerHTML = `<h2>${app.poemInfo.title}</h2>`;
 
   document.querySelector(".hardSubmit").removeAttribute("disabled", "");
   document.querySelector("input[type='text']").removeAttribute("disabled", "");
