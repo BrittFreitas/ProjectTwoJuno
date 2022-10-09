@@ -1,4 +1,5 @@
 @use "./shared/variables" as *;
+@use "./mixins" as *;
 
 .easyGame {
 display: flex;
@@ -55,6 +56,15 @@ justify-content: center;
         justify-content: space-between;
         align-items: center;
         width: 65%;
+
+        @include tablet {
+            display: flex;
+            flex-direction: column;
+
+            .currentScore {
+                margin-top: 20px;
+            }
+        }
     }
 
     .buttonContainer {

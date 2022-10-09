@@ -1,4 +1,5 @@
 @use "./shared/variables" as *;
+@use "./mixins" as *;
 
 .hardGame {
     display: flex;
@@ -11,6 +12,10 @@
     }
     h3 {
         font-size: 5rem;
+
+        @include tablet {
+            text-align: center;
+        }
     }
 }
 
@@ -18,7 +23,15 @@
     display: flex;
     width: 80%;
     gap: 25px;
-    max-height: 75px;
+ 
+
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
 
     input {
         all: unset;
@@ -37,6 +50,13 @@
         &::placeholder {
             color: $darkOrange;
         }
+<<<<<<< HEAD
+       
+        @include tablet {
+        height: 50%;
+        }
+=======
+>>>>>>> 3a12f8db186435f091963a020abd2f7117ebd376
     }
 }
 
@@ -45,9 +65,24 @@
     justify-content: space-between;
     width: 80%;
     margin: 25px 0;
+
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        button.nextButton.nextHard {
+            width: 20%;
+        }
+    }
     
     .currentScoreHard {
         align-self: center;
+
+        @include tablet {
+            margin-top: 20px;
+        }
     }
 }
 
