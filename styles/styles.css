@@ -292,7 +292,8 @@ button {
   color: white;
 }
 .submit:disabled {
-  background-color: gray;
+  background-color: #d3d8d8;
+  color: white;
 }
 
 .nextButton, .finishButton, .startButton {
@@ -300,8 +301,8 @@ button {
   border: none;
   background-color: #679b9b;
   color: #2d3a3a;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
   min-width: 300px;
 }
 .nextButton:hover, .nextButton:focus, .finishButton:hover, .finishButton:focus, .startButton:hover, .startButton:focus {
@@ -483,6 +484,22 @@ button {
       -ms-flex-pack: center;
           justify-content: center;
 }
+.easyGame input:checked + label {
+  outline: 5px solid #9bc5c5;
+  -webkit-box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+          box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+.easyGame input:disabled + label {
+  color: #d3d8d8;
+  pointer-events: none;
+  outline: none;
+}
+.easyGame .easySubmit {
+  background-color: #ffd2b5;
+}
+.easyGame .easySubmit:disabled {
+  background-color: #d3d8d8;
+}
 
 .poemTitleContainer {
   display: -webkit-box;
@@ -550,10 +567,13 @@ button {
   width: 65%;
 }
 
-input:checked + label {
-  outline: 5px solid #9bc5c5;
-  -webkit-box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-          box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+.poemTitleContainer .correct {
+  border: 5px solid #89c2a0;
+}
+.poemTitleContainer .incorrect {
+  border: 2px solid white;
+  border-style: inset;
+  background-color: #ff8676;
 }
 
 .hardGame {
@@ -585,16 +605,19 @@ input:checked + label {
   display: flex;
   width: 80%;
   gap: 25px;
+  max-height: 75px;
 }
 .hardQuestion input {
   all: unset;
+  border-style: hidden;
   background-color: white;
   border-radius: 50px;
   width: 80%;
   padding-left: 25px;
 }
 .hardQuestion input:disabled {
-  background-color: gray;
+  color: #d3d8d8;
+  pointer-events: none;
 }
 .hardQuestion input:hover, .hardQuestion input:focus {
   outline: 5px solid #ffd2b5;
@@ -636,12 +659,4 @@ input:checked + label {
 
 .hidden {
   display: none;
-}
-
-.correct {
-  background-color: green;
-}
-
-.incorrect {
-  background-color: red;
 }
