@@ -57,7 +57,8 @@ button {
         color: white;
     }
     &:disabled {
-        background-color: gray;
+        background-color: $lightGray;
+        color: white;
     }
 }
 
@@ -66,7 +67,7 @@ button {
     border: none;
     background-color: $teal;
     color: $veryDarkTeal;
-    transition: 0.3s;
+    transition: 0.3s ease;
     min-width: 300px;
     &:hover, &:focus {
         background-color: $lightTeal;
