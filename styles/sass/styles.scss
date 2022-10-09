@@ -8,23 +8,19 @@
 @use "./partials/endPage";
 @use "./partials/shared/mediaQueries";
 
-
+.invisible {
+    display: none;
+}
 
 .hidden {
     display: none;
 }
 
-.invisible {
-    display: none;
-}
-.modeSelection{
-    label {
-        margin: 20px 0 20px 20px;
-    }
-}
 
-
-label {
-    cursor: pointer;
-}
-
+.correct {
+    background-color: green;
+  }
+  
+  .incorrect {
+    background-color: red;
+  }

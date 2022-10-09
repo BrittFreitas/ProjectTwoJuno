@@ -202,14 +202,9 @@ template {
   display: none;
 }
 
-html {
+* {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-*, *:before, *:after {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 .sr-only {
@@ -226,6 +221,34 @@ html {
   overflow: hidden;
 }
 
+body {
+  background-image: url("../assets/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+}
+body section {
+  height: 75vh;
+}
+
+header {
+  height: 25vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+header h1 {
+  color: #2d3a3a;
+  font-size: 10rem;
+}
+
 .wrapper {
   max-width: 1400px;
   width: 90%;
@@ -236,35 +259,114 @@ label {
   cursor: pointer;
 }
 
-body {
-  background-image: url("../assets/background-gbafd6026a_1280.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-section {
-  height: 100vh;
-}
-
 fieldset {
   border: none;
 }
 
+button {
+  height: clamp(50px, 0.5vh, 75px);
+}
+
+.submit {
+  border: none;
+  color: #503f39;
+  background-color: #ff9a76;
+  height: 75px;
+  text-align: center;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border-radius: 25px;
+  width: 300px;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+.submit:hover, .submit:focus {
+  background-color: #ffb395;
+  color: white;
+}
+.submit:disabled {
+  background-color: gray;
+}
+
+.nextButton, .finishButton {
+  border-radius: 25px;
+  border: none;
+  background-color: #679b9b;
+  color: #2d3a3a;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  min-width: 300px;
+}
+.nextButton:hover, .nextButton:focus, .finishButton:hover, .finishButton:focus {
+  background-color: #9bc5c5;
+  color: white;
+}
+
+footer {
+  background-color: white;
+  bottom: 0;
+}
+
+.stackTop {
+  z-index: 9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform: translateY(50vh);
+          transform: translateY(50vh);
+}
+.stackTop .loadingIcon {
+  -webkit-animation: spin 1.3s infinite linear;
+          animation: spin 1.3s infinite linear;
+  width: 2em;
+  height: 2em;
+  position: absolute;
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
 html {
   font-size: 62.5%;
 }
 
 body {
-  font-family: "Bad Script", cursive;
+  font-family: "Bad Script", cursive, sans-serif;
   font-size: 3rem;
   color: #2d3a3a;
 }
-body h1, body h2 {
+
+h1, h2 {
   font-size: 6rem;
-  margin-top: 150px;
   font-weight: bold;
 }
-body h3 {
+
+h3 {
   font-size: 5rem;
 }
 
@@ -349,15 +451,6 @@ button {
           transform: scale(1.1);
 }
 
-.correct {
-  background-color: green;
-}
-
-.incorrect {
-  background-color: red;
-}
-
-
 .easyGame {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -366,155 +459,10 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-    text-align: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
- .hardGame {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 90%;
-}
-.hardGame h2 {
-  color: #2d3a3a;
-  font-size: 10rem;
-  margin-bottom: 250px;
-}
-.hardGame h2 .underline {
-  border-bottom: 10px solid #2d3a3a;
-}
-.hardGame h3 {
-  font-size: 5rem;
-}
-
-.hardQuestion {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 80%;
-}
-.hardQuestion input {
-  all: unset;
-  background-color: white;
-  border-radius: 50px;
-  width: 80%;
-  padding-left: 25px;
-  margin: 25px;
-}
-.hardQuestion input:hover, .hardQuestion input:focus {
-  outline: 5px solid #ffd2b5;
-}
-.hardQuestion input::-webkit-input-placeholder {
-  padding: 100px;
-}
-.hardQuestion input::-moz-placeholder {
-  padding: 100px;
-}
-.hardQuestion input:-ms-input-placeholder {
-  padding: 100px;
-}
-.hardQuestion input::-ms-input-placeholder {
-  padding: 100px;
-}
-.hardQuestion input::placeholder {
-  padding: 100px;
-}
-.hardQuestion .hardSubmit {
-  border: none;
-  color: #503f39;
-  background-color: #ff9a76;
-  margin: 25px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-.hardQuestion .hardSubmit:hover, .hardQuestion .hardSubmit:focus, .hardQuestion .hardSubmit:disabled {
-  background-color: #ffb395;
-  color: white;
-}
-
-.resultContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 80%;
-  padding: 25px;
-  margin-bottom: 20%;
-}
-.resultContainer button {
-  border: none;
-  background-color: #679b9b;
-  color: #2d3a3a;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  min-width: 300px;
-}
-.resultContainer button:hover, .resultContainer button:focus {
-  background-color: #9bc5c5;
-  color: white;
-}
-.resultContainer .currentScoreHard {
-  -ms-flex-item-align: center;
-      align-self: center;
-}
-
-.correct {
-  background-color: green;
-}
-
-.easyGame h2.easyGameTitle {
-  margin: 0;
-}
-
-.buttonContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   text-align: center;
-  gap: 20px;
-}
-.buttonContainer .easySubmit {
-  background-color: #FF9A76;
-  margin-top: 15px;
-}
-.buttonContainer .easySubmit:hover, .buttonContainer .easySubmit:focus {
-  background-color: #FFB395;
-  color: white;
-}
-.buttonContainer .next {
-  background-color: #679B9B;
-}
-.buttonContainer .next:hover, .buttonContainer .next:focus {
-  background-color: #9BC5C5;
-  color: white;
-}
-.buttonContainer .next, .buttonContainer .easySubmit {
-  width: 300px;
-  border-radius: 25px;
-  padding: 20px;
-  border: none;
-  -webkit-transition: 0.5 ease;
-  transition: 0.5 ease;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .poemTitleContainer {
@@ -533,16 +481,17 @@ button {
       -ms-flex-align: center;
           align-items: center;
   gap: 7px;
+  width: 100%;
 }
 .poemTitleContainer input {
   visibility: hidden;
 }
 .poemTitleContainer .easyOption {
-  padding: 40px;
+  padding: 25px;
   gap: 20px;
-  background-color: #FFD2B5;
+  background-color: white;
   border-radius: 25px;
-  width: 50%;
+  width: 65%;
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
 }
@@ -550,24 +499,130 @@ button {
   -webkit-box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
           box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
 }
+.poemTitleContainer .resultContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 65%;
+}
+.poemTitleContainer .buttonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  gap: 20px;
+  margin-top: 25px;
+  width: 65%;
+}
 
 input:checked + label {
+  outline: 5px solid #9bc5c5;
   -webkit-box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
           box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
 }
 
-.hidden {
-  display: none;
+.hardGame {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+.hardGame .titleContainer {
+  width: 80%;
+}
+.hardGame h3 {
+  font-size: 5rem;
+}
+
+.hardQuestion {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+  gap: 25px;
+}
+.hardQuestion input {
+  all: unset;
+  background-color: white;
+  border-radius: 50px;
+  width: 80%;
+  padding-left: 25px;
+}
+.hardQuestion input:disabled {
+  background-color: gray;
+}
+.hardQuestion input:hover, .hardQuestion input:focus {
+  outline: 5px solid #ffd2b5;
+}
+.hardQuestion input::-webkit-input-placeholder {
+  color: #ff9a76;
+}
+.hardQuestion input::-moz-placeholder {
+  color: #ff9a76;
+}
+.hardQuestion input:-ms-input-placeholder {
+  color: #ff9a76;
+}
+.hardQuestion input::-ms-input-placeholder {
+  color: #ff9a76;
+}
+.hardQuestion input::placeholder {
+  color: #ff9a76;
+}
+
+.resultContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 80%;
+  margin: 25px 0;
+}
+.resultContainer .currentScoreHard {
+  -ms-flex-item-align: center;
+      align-self: center;
 }
 
 .invisible {
   display: none;
 }
 
-.modeSelection label {
-  margin: 20px 0 20px 20px;
+.hidden {
+  display: none;
 }
 
-label {
-  cursor: pointer;
+.correct {
+  background-color: green;
+}
+
+.incorrect {
+  background-color: red;
 }
