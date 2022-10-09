@@ -35,20 +35,19 @@
 
     input {
         all: unset;
-        border-style: hidden;
         background-color: white;
         border-radius: 50px;
         width: 80%;
         padding-left: 25px;
-        &:disabled {
-            color: $lightGray;
-            pointer-events: none;
-        }
         &:hover, &:focus {
             outline: 5px solid $medOrange;
         }
         &::placeholder {
             color: $darkOrange;
+        }
+        &:disabled {
+            color: $lightGray;
+            pointer-events: none;
         }
        
         @include tablet {

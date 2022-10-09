@@ -312,6 +312,10 @@ footer p {
   padding-right: 10px;
 }
 
+.loadingIcon {
+  color: #679b9b;
+}
+
 .stackTop {
   z-index: 9;
   display: -webkit-box;
@@ -367,7 +371,7 @@ body {
 
 h1 {
   color: #637373;
-  font-size: clamp(5rem, 5vw, 10rem);
+  font-size: clamp(4.5rem, 5vw, 10rem);
   text-align: center;
   margin-bottom: 20px;
 }
@@ -643,15 +647,10 @@ button {
 }
 .hardQuestion input {
   all: unset;
-  border-style: hidden;
   background-color: white;
   border-radius: 50px;
   width: 80%;
   padding-left: 25px;
-}
-.hardQuestion input:disabled {
-  color: #d3d8d8;
-  pointer-events: none;
 }
 .hardQuestion input:hover, .hardQuestion input:focus {
   outline: 5px solid #ffd2b5;
@@ -670,6 +669,10 @@ button {
 }
 .hardQuestion input::placeholder {
   color: #ff9a76;
+}
+.hardQuestion input:disabled {
+  color: #d3d8d8;
+  pointer-events: none;
 }
 @media (max-width: 900px) {
   .hardQuestion input {

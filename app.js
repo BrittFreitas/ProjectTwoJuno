@@ -68,6 +68,7 @@ app.resetGame = () => {
   app.counter = 0;
   app.numOfNextClicks = 0;
   app.questionNumber = 0;
+  app.submitted = false;
   app.removeClassFromOptions();
   document.querySelector(".currentScore").innerHTML = "";
   document.querySelector(".currentScoreHard").innerHTML = "";
@@ -182,10 +183,14 @@ app.events = () => {
   // next button in easy mode 
   const nextButtonEasy = document.querySelector(".next");
   nextButtonEasy.addEventListener("click", () => {
-    app.questionNumber = app.questionNumber + 1;
-    document.querySelector("input[name='option']:checked").checked = false;
-    app.questionTracker();
-    app.removeClassFromOptions();
+    if (app.submitted === true) {
+      app.questionNumber = app.questionNumber + 1;
+      app.questionTracker();
+      app.removeClassFromOptions();
+      app.submitted = false;
+    } else {
+      alert("Please submit your answer")
+    }
   });
   
   // submit answer button in easy mode - updates the current score
@@ -193,23 +198,21 @@ app.events = () => {
 
   easyResponse.addEventListener("submit", (event) => {
     event.preventDefault();
+    const submitter = event.submitter;
+    app.easySubmitButton = document.querySelector(".easySubmit");
     const selectedAnswer = document.querySelector("input[name='option']:checked");
-    if (selectedAnswer !== null) {
+    if (selectedAnswer !== null && submitter === app.easySubmitButton) {
       const selectedPoemTitle = document.querySelector(`label[for="${selectedAnswer.id}"]`);
-    
-      document.querySelector(".easySubmit").setAttribute("disabled", "");
+      app.easySubmitButton.setAttribute("disabled", "");
       app.allOptions.forEach((option) => {
         option.setAttribute("disabled", "");
       });
       app.checkEasyAnswer(selectedPoemTitle);
-      
       const currentScore = document.querySelector(".currentScore");
       currentScore.innerHTML = `Current score: ${app.counter}/${app.totalQuestions}`;
-      
-      } //else {
-      //   alert("Please select an option")
-      // }
-    
+      document.querySelector("input[name='option']:checked").checked = false;
+      app.submitted = true;
+      }
   });
 
   // next button in hard mode 
