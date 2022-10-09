@@ -1,1 +1,23 @@
 @use "./shared/variables" as *;
+
+
+.endPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .finalContent {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        top: 50vh;
+        background-color: white;
+        border-radius: 50px;
+        width: 50%;
+        height: 75%;
+    
+        .restart {
+            margin-bottom: 50px;
+        }
+    }
+}

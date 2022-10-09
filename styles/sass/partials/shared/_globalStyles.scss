@@ -50,7 +50,7 @@ button {
 .submit {
     border: none;
     color: $darkBrown;
-    background-color: $darkOrange;
+    background-color: $medOrange;
     height: 75px;
     text-align: center;
     transition: 0.3s;
@@ -67,7 +67,7 @@ button {
     }
 }
 
-.nextButton, .finishButton, .startButton {
+.nextButton, .finishButton, .startButton, .restart {
     border-radius: 25px;
     border: none;
     background-color: $teal;

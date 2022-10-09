@@ -37,7 +37,6 @@
         &::placeholder {
             color: $darkOrange;
         }
-       
     }
 }
 
@@ -49,5 +48,18 @@
     
     .currentScoreHard {
         align-self: center;
+    }
+}
+
+
+.hardQuestion {
+    .correct {
+        border: 5px solid $correct;
+    }
+    .incorrect {
+        input[type="text"] {
+             border: 5px solid $incorrect;
+        }
+       
     }
 }
