@@ -220,6 +220,7 @@ app.events = () => {
   nextButtonHard.addEventListener("click", () => {
     document.getElementById("textBox").value = "";
     app.questionNumber = app.questionNumber + 1;
+    app.textBox.classList.remove("correct", "incorrect");
     app.questionTracker();
     app.displayHardPoem();
   });
@@ -234,6 +235,9 @@ app.events = () => {
     const userAnswer = document.getElementById("textBox").value;
     if (userAnswer.toLowerCase() === app.poemInfo.author.toLowerCase()) {
       app.counter = app.counter + 1;
+      app.textBox.classList.add("correct");
+    } else {
+      app.textBox.classList.add("incorrect");
     }
     currentScore.innerHTML = `Current score: ${app.counter}/${app.totalQuestions}`;
     
@@ -269,6 +273,7 @@ app.init = () => {
   app.endPage = document.querySelector(".endPage");
   app.footer = document.querySelector("footer");
   app.allOptions = document.querySelectorAll("input[name='option']");
+  app.textBox = document.querySelector("input[id='textBox']");
   app.totalQuestions = 5;
   
   app.startQuiz();

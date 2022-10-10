@@ -645,6 +645,13 @@ button {
             align-items: center;
   }
 }
+.hardQuestion .correct {
+  outline: 5px solid #89c2a0;
+}
+.hardQuestion .incorrect {
+  outline: 5px solid #ff8676;
+  border: 1px solid white;
+}
 .hardQuestion input {
   all: unset;
   background-color: white;
@@ -718,13 +725,6 @@ button {
   .resultContainer .currentScoreHard {
     margin-top: 20px;
   }
-}
-
-.hardQuestion .correct {
-  border: 5px solid #89c2a0;
-}
-.hardQuestion .incorrect input[type=text] {
-  border: 5px solid #ff8676;
 }
 
 .endPage {
