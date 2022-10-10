@@ -273,10 +273,7 @@ button {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   border-radius: 25px;
-  width: 300px;
-  min-width: -webkit-fit-content;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
+  width: clamp(250px, 17.5vw, 300px);
 }
 .submit:hover, .submit:focus {
   background-color: #ffb395;
@@ -294,7 +291,7 @@ button {
   color: #2d3a3a;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
-  min-width: 300px;
+  width: clamp(250px, 17.5vw, 300px);
 }
 .nextButton:hover, .nextButton:focus, .finishButton:hover, .finishButton:focus, .startButton:hover, .startButton:focus, .restart:hover, .restart:focus {
   background-color: #9bc5c5;
@@ -313,6 +310,10 @@ footer p {
   margin: 0px;
   text-align: right;
   padding-right: 10px;
+}
+
+.loadingIcon {
+  color: #679b9b;
 }
 
 .stackTop {
@@ -370,7 +371,7 @@ body {
 
 h1 {
   color: #637373;
-  font-size: clamp(5rem, 5vw, 10rem);
+  font-size: clamp(4.5rem, 5vw, 10rem);
   text-align: center;
   margin-bottom: 20px;
 }
@@ -644,17 +645,19 @@ button {
             align-items: center;
   }
 }
+.hardQuestion .correct {
+  outline: 5px solid #89c2a0;
+}
+.hardQuestion .incorrect {
+  outline: 5px solid #ff8676;
+  border: 1px solid white;
+}
 .hardQuestion input {
   all: unset;
-  border-style: hidden;
   background-color: white;
   border-radius: 50px;
   width: 80%;
   padding-left: 25px;
-}
-.hardQuestion input:disabled {
-  color: #d3d8d8;
-  pointer-events: none;
 }
 .hardQuestion input:hover, .hardQuestion input:focus {
   outline: 5px solid #ffd2b5;
@@ -673,6 +676,10 @@ button {
 }
 .hardQuestion input::placeholder {
   color: #ff9a76;
+}
+.hardQuestion input:disabled {
+  color: #d3d8d8;
+  pointer-events: none;
 }
 @media (max-width: 900px) {
   .hardQuestion input {
@@ -718,13 +725,6 @@ button {
   .resultContainer .currentScoreHard {
     margin-top: 20px;
   }
-}
-
-.hardQuestion .correct {
-  border: 5px solid #89c2a0;
-}
-.hardQuestion .incorrect input[type=text] {
-  border: 5px solid #ff8676;
 }
 
 .endPage {

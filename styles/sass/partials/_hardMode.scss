@@ -24,7 +24,6 @@
     width: 80%;
     gap: 25px;
  
-
     @include tablet {
         display: flex;
         flex-direction: column;
@@ -33,22 +32,29 @@
         
     }
 
+    .correct {
+        outline: 5px solid $correct;
+    }
+    .incorrect {
+        outline: 5px solid $incorrect;
+        border: 1px solid white;
+    }
+
     input {
         all: unset;
-        border-style: hidden;
         background-color: white;
         border-radius: 50px;
         width: 80%;
         padding-left: 25px;
-        &:disabled {
-            color: $lightGray;
-            pointer-events: none;
-        }
         &:hover, &:focus {
             outline: 5px solid $medOrange;
         }
         &::placeholder {
             color: $darkOrange;
+        }
+        &:disabled {
+            color: $lightGray;
+            pointer-events: none;
         }
        
         @include tablet {
@@ -80,18 +86,5 @@
         @include tablet {
             margin-top: 20px;
         }
-    }
-}
-
-
-.hardQuestion {
-    .correct {
-        border: 5px solid $correct;
-    }
-    .incorrect {
-        input[type="text"] {
-             border: 5px solid $incorrect;
-        }
-       
     }
 }
