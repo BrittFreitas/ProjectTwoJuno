@@ -288,13 +288,13 @@ button {
   border-radius: 25px;
   border: none;
   background-color: #679b9b;
-  color: #2d3a3a;
+  color: #1b2424;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   width: clamp(250px, 17.5vw, 300px);
 }
 .nextButton:hover, .nextButton:focus, .finishButton:hover, .finishButton:focus, .startButton:hover, .startButton:focus, .restart:hover, .restart:focus {
-  background-color: #9bc5c5;
+  background-color: #a5b7b8;
   color: white;
 }
 
@@ -310,6 +310,11 @@ footer p {
   margin: 0px;
   text-align: right;
   padding-right: 10px;
+}
+@media (max-width: 900px) {
+  footer p {
+    text-align: center;
+  }
 }
 
 .loadingIcon {
@@ -366,14 +371,14 @@ html {
 body {
   font-family: "Bad Script", cursive, sans-serif;
   font-size: clamp(2.2rem, 2vw, 3rem);
-  color: #2d3a3a;
+  color: #1b2424;
 }
 
 h1 {
   color: #637373;
   font-size: clamp(4.5rem, 5vw, 10rem);
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 55px;
 }
 
 h2 {
@@ -450,11 +455,25 @@ button {
           flex-direction: row;
   margin: 60px 0px;
 }
+.landingPage .modeSelection fieldset .modes input:checked + label {
+  outline: 2px solid white;
+}
+@media (max-width: 600px) {
+  .landingPage .modeSelection fieldset .modes {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
 .landingPage .modeSelection fieldset .modes .easyBox {
-  background: #679b9b;
+  background: #a5b7b8;
 }
 .landingPage .modeSelection fieldset .modes .hardBox {
-  background: #9bc5c5;
+  background: #8aabad;
 }
 .landingPage .modeSelection fieldset .modes .modeInputs {
   visibility: hidden;
@@ -469,6 +488,69 @@ button {
 .landingPage .modeSelection fieldset .modes label:hover, .landingPage .modeSelection fieldset .modes label:focus {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+}
+@media (max-width: 600px) {
+  .landingPage .modeSelection fieldset .modes label {
+    padding: 50px 100px;
+  }
+}
+.landingPage .instructions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+@media (max-width: 600px) {
+  .landingPage .instructions {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 30px;
+  }
+}
+.landingPage .instructionsEasy,
+.landingPage .instructionsHard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: white;
+  border-radius: 50px;
+  width: 31%;
+  margin: -30px 0px 20px 10px;
+  min-width: 250px;
+}
+@media (max-width: 600px) {
+  .landingPage .instructionsEasy,
+.landingPage .instructionsHard {
+    width: 60%;
+  }
+}
+.landingPage .instructionsEasy p,
+.landingPage .instructionsHard p {
+  width: 95%;
+  margin: 5px;
+  padding: 10px;
+  font-size: 1.4rem;
+}
+.landingPage .instructionsEasy p span,
+.landingPage .instructionsHard p span {
+  font-weight: bold;
+}
+.landingPage .instructionsEasy h3,
+.landingPage .instructionsHard h3 {
+  font-size: 2rem;
 }
 
 .easyGame {
@@ -485,7 +567,7 @@ button {
           justify-content: center;
 }
 .easyGame input:checked + label {
-  outline: 5px solid #9bc5c5;
+  outline: 5px solid #a5b7b8;
   -webkit-box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
           box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
 }
@@ -528,6 +610,11 @@ button {
 .poemTitleContainer .easyOption:hover, .poemTitleContainer .easyOption:focus {
   -webkit-box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
           box-shadow: 0px 10px 13px -7px #637373, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+@media (max-width: 900px) {
+  .poemTitleContainer .easyOption {
+    min-width: 250px;
+  }
 }
 .poemTitleContainer .correct {
   border: 5px solid #89c2a0;
@@ -612,11 +699,11 @@ button {
 .hardGame .titleContainer {
   width: 80%;
 }
-.hardGame h3 {
+.hardGame h2 {
   font-size: 5rem;
 }
 @media (max-width: 900px) {
-  .hardGame h3 {
+  .hardGame h2 {
     text-align: center;
   }
 }
@@ -684,6 +771,7 @@ button {
 @media (max-width: 900px) {
   .hardQuestion input {
     height: 50%;
+    min-width: 250px;
   }
 }
 
@@ -739,6 +827,12 @@ button {
           align-items: center;
 }
 .endPage .finalContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   top: 50vh;
   background-color: white;
   border-radius: 50px;
